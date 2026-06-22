@@ -1,0 +1,245 @@
+/*Modo claro*/
+:root {
+    /* --md-primary-fg-color: #6c2f2f; */
+    --md-primary-fg-color: #505050;
+  }
+
+/* Mejora en la distribución de filtros*/
+#filtros{
+    display: flex;
+    gap: .8rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: .75rem 0 1rem;
+}
+
+body{
+  background-color: #e0e0e0;
+}
+
+.md-content{
+  background-color: whitesmoke;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* padding: 0; */
+}
+
+/*Los resultados vistos como tarjetitas*/
+
+.card {
+  display: block;
+  position: relative;
+  min-height: 170px;
+  /* border-bottom: 1px solid rgba(0, 0, 0, .1); */
+  margin: .65rem 0;
+  /* border: 1px solid rgba(0,0,0,0.15); */
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: .75rem;
+  padding: 1rem;
+  margin: .65rem 0;
+  background: var(--md-default-bg-color);
+  /* box-shadow: 0 1px 3px rgba(12, 8, 132, 0.569);  */
+  /* border: 1px solid rgba(0,0,0,0.15);
+    border-radius: .75rem;
+    padding: 1rem;
+    margin: .65rem 0;
+    background: var(--md-default-bg-color);
+    box-shadow: 0 1px 3px rgba(12, 8, 132, 0.569); */
+}
+.card h3 {
+    margin:.1rem 0 .35rem;
+    font-size: 1rem;
+    line-height: 1.2;
+}
+
+.card .autores {
+    margin:.3rem 0 .5rem;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    /* color: var(--md-default-fg-color--lighter); */
+}
+.card .meta {
+    margin:.3rem 0 .5rem;
+    font-size: 0.6rem;
+    line-height: 1.4;
+    /* color: var(--md-default-fg-color--lighter); */
+}
+
+.card a:hover {
+  color: var(--md-default-fg-color--lighter);
+}
+
+/* Estilo para las tarjetitas */
+.libro-portada {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.libro-portada img {
+  height: 150px;
+}
+
+.libro-datos {
+  display: inline-block;
+  position: relative;
+  font-size: .85rem;
+  font-weight: 300;
+  margin-left: 150px;
+}
+
+/*Botones en cada tarjetita*/
+.card .actions {
+    display:flex;
+    gap:.4rem;
+    flex-wrap: wrap;
+    margin-top:.6rem;
+}
+.card .md-button{
+    padding: .3rem .6rem;
+    font-size:.82rem;
+}
+
+
+/* Banner tipo anuncio del encabezado */
+.md-banner {
+  background-color: #303030;
+
+  font-size: 0.9em;
+  max-width: initial;
+
+}
+
+#encabezado {
+  position: absolute;
+  max-width: initial;
+  width: 80%;
+  top: 0px;
+  /* margin: auto; */
+  /* z-index: 1000; */
+}
+
+#encabezado > div#logoizq {
+  height: 100px;
+  width: 89px;
+  display: block;
+  position: absolute;
+  /* left: 2rem; */
+  /* background-color: coral; */
+  background-image: url("../assets/logos/unam-silver.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+#encabezado > div#logoizq:hover {
+  background-image: url("../assets/logos/unam-gold.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+#encabezado > div#logomid {
+  height: 81px;
+  width: 337px;
+  display: block;
+  position: relative;
+  margin: auto;
+  /* background-color: coral; */
+  background-image: url("../assets/logos/logo-papirhos-digital.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+#encabezado > div#logoder {
+  height: 90px;
+  width: 216px;
+  display: block;
+  position: absolute;
+  right: 0;
+  /* background-color: coral; */
+  background-image: url("../assets/logos/im-cropped.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+#encabezado > div#logoder:hover {
+  background-image: url("../assets/logos/im-cropped-H.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.chips {
+    display:flex;
+    gap:.4rem;
+    flex-wrap:wrap;
+    margin:.25rem 0 .8rem;
+} 
+.chip{
+    display:inline-flex;
+    align-items:center;
+    gap:.35rem;
+    font-size:.78rem;
+    padding:.15rem  .5rem;
+    border-radius:999px;
+    background: var(--md-primary-fg-color--transparent);
+    border: 1px solid var(--md-default-fg-color-lighter);
+}
+.chip .icon {
+    font-size:.95em;
+    opacity:.8
+}
+.muted {color: rgba(0,0,0,.55)};
+details > summary { cursor: pointer;
+    margin: .5rem 0;}
+    details[open] > summary
+    { margin-bottom: .5rem;}
+
+.hidden{display: none !important;}
+
+/*Ocultar el nombre de la página y dejar solo el logo*/
+.md-header__title .md-header__topic:first-child .md-ellipsis {
+  font-size: 0;
+}
+
+@media screen and (max-width:
+ 76.1875em){
+  .md-header__button.md-logo{
+    display: inline-flex !important;
+    align-items: center;
+  }
+}
+
+/*Reordena menú hamburguesa*/
+.md-header__button.md-logo{
+  order: 2;
+}
+
+.md-header__button.md-nav-button{
+  order: 1;
+}
+
+.md-header__inner{
+  display: flex;
+  align-items: center;
+}
+
+
+
+
