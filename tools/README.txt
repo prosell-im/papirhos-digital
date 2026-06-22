@@ -1,3 +1,7 @@
+Básicos de mkdocs:
+  mkdocs serve:  
+  mkdocs build: 
+
 En esta carpeta se encuentran los scripts de python usados para generar los archivos de la página. El script central es *pipeline_archivos.py*. 
 
 pipeline_archivos: 
