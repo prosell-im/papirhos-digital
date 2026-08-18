@@ -15,15 +15,16 @@ Archivos .csv ocupados como base de datos para los libros que se muestran en la 
 Cada archivo comparte datos similares con ciertas diferencias:
 catalogo_old.csv: Recopilación de datos de solo ciertos libros
 catalogo-pre.csv: Mayor cantidad de libros entre los tres
-catalogo.csv: Practicamente igual a catalogo-pre.csv. Tiene un libro menos
+catalogo.csv: Prácticamente igual a catalogo-pre.csv. Tiene un libro menos
 ### Estado de uso:
 - Pendiente de verificar:
 - Sin referencias encontradas:
 catalogo_old.csv, 
 catalogo-pre.csv
+
 ### Observaciones pendientes:
 ¿Es necesario mantener en la carpeta los tres catálogos?
-¿El atributo de <resumen> se toma de algun otro archivo o por qué algunos solo tienen resumen #?
+¿El atributo de <resumen> se toma de algún otro archivo o por qué algunos solo tienen resumen #?
 En caso de mantener más de un catálogo, ¿cuál es el principal?
 
 
@@ -39,6 +40,7 @@ catalogo-unsort.json (evaluar)
 - Assets: Archivos fuentes para el sitio (imágenes, pdfs y logos)
 - Páginas principales del sitio web: acerca.md, catalogo.md, explorar.md, index.md, tul.md
 - Datos para el frontend: data/catalogo.json, catalogo.json
+
 ### Notas:
 La carpeta pdfs_src contiene archivos fuente (assets). Sin embargo, en la misma sección (docs) se puede encontrar carpetas individuales de cada libro con su respectivo PDF con una marca de agua. Se usa watermark_to_book_folder.py para la elaboración de dichas carpetas. No se recomienda editar las versiones individuales.
 
@@ -103,6 +105,6 @@ escritor_bibtex.py
 
 ## Posibles mejoras al código:
 - Confirmar el uso de archivos en la sección principal
-- Analizar la prosibilidad de trasladar ciertos documentos a legacy files
-- Evaluar si ciertos archivos son necesario o se pueden generar a partir del catálogo principal.
+- Analizar la posibilidad de trasladar ciertos documentos a legacy files
+- Evaluar si ciertos archivos son necesarios o se pueden generar a partir del catálogo principal.
 -Consistencia en los datos (archivos con más o menos libros que en otros)
