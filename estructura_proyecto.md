@@ -16,6 +16,7 @@ catalogo.csv: Prácticamente igual a catalogo-pre.csv. Tiene un libro menos
 - Sin referencias encontradas:
 catalogo_old.csv, 
 catalogo-pre.csv
+
 ### Observaciones pendientes:
 ¿Es necesario mantener en la carpeta los tres catálogos?
 ¿El atributo de <resumen> se toma de algún otro archivo o por qué algunos solo tienen resumen #?
@@ -34,6 +35,7 @@ catalogo-unsort.json (editar)
 - Assets: Archivos fuentes para el sitio (imágenes, PDFs y logos)
 - Páginas principales del sitio web: acerca.md, catalogo.md, explorar.md, index.md, tul.md
 - Datos para el frontend: data/catalogo.json, catalogo.json
+
 ### Notas:
 La carpeta pdfs_src contiene archivos fuente (assets). Sin embargo, en la misma sección (docs) se puede encontrar carpetas individuales de cada libro con su respectivo PDF con una marca de agua. Se usa watermark_to_book_folder.py para la elaboración de dichas carpetas. No se recomienda editar las versiones individuales.
 
@@ -111,5 +113,9 @@ escritor_bibtex.py
 ## Posibles mejoras al código:
 - Confirmar el uso de archivos en la sección principal
 - Analizar la posibilidad de trasladar ciertos documentos a legacy files
+<<<<<<< HEAD
 - Evaluar si ciertos archivos son necesario o se pueden generar a partir del catálogo principal.
+=======
+- Evaluar si ciertos archivos son necesarios o se pueden generar a partir del catálogo principal.
+>>>>>>> 9f325b5b9b354b4aa10c3ea86b5a4b6e9a076b10
 -Consistencia en los datos (archivos con más o menos libros que en otros)
