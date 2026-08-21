@@ -21,16 +21,13 @@ def main():
     print(f"Filas leídas: {len(filas)}") #Confirmación de lectura de fichas
     libros_dir = os.path.join(BASE,"docs","libros") #Dirección de guardado de los libros ---BASE/DOCS---- (Aquí se guardarán las páginas de MARKDOWN)
     os.makedirs(libros_dir,exist_ok=True) #Verifica la no sobrescritura del directorio
-    orden_filas = sorted(filas,
-           key = lambda r: ((r.get("autores") or ""), (r.get("titulo") or "").lower())
-    ) #Ordena las filas de la lista; primero autores y después título. Regresa una lista ordenada.
 
 #------------------------------------------------------------------------------------------------------------------------------------------
 
 #-------------------------------------------------------- Escritura de catálogo  --------------------------------------------------------
 
     #Escribe el catálogo con titulo, identificador, coleccion, serie, estado y un separador; regresa una lista cuyas entradas son espacios y estos textos
-    lineas = escritor_catalogo.lista_catalogo(orden_filas)
+    lineas = escritor_catalogo.lista_catalogo(filas)
     catalogo_path = os.path.join(BASE, "docs", "catalogo.md") #Path para guardar el catálogo: BASE/docs
     with open(catalogo_path, "w", encoding = "utf-8") as fcat:
            fcat.write("\n".join(lineas))
