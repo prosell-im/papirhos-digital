@@ -1,9 +1,12 @@
 import os
 import pandas as pd
+
 # ==========================
 # RUTAS DE ENTRADA / SALIDA
 # ==========================
+
 BASE = os.path.dirname(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.dirname(BASE)
 
 
 AUTORES_CSV        = os.path.join(BASE, "catalogo_qr", "autores.csv")
@@ -11,7 +14,7 @@ AUTORES_LIBROS_CSV = os.path.join(BASE, "catalogo_qr", "libros_autores.csv")
 RESUMENES_CSV      = os.path.join(BASE, "catalogo_qr", "resumenes.csv")
 LIBROS_CSV         = os.path.join(BASE, "catalogo_qr", "libros.csv")
 
-SALIDA_CSV         = "../../data/catalogo.csv"
+SALIDA_CSV         = os.path.join(PROJECT_ROOT, "data", "catalogo.csv")
 
 # ==========================
 # 1. LEER ARCHIVOS
@@ -37,28 +40,14 @@ autores["apellidos"] = autores["apellidos"].fillna("").astype(str)
 autores["autor_fmt"] = autores["nombres"] + ">" + autores["apellidos"]
 
 # ==========
-# AUTORES_LIBROS: reventar listas de ids
-# ==========
-
-# ==========
-# 3. PROCESAR AUTORES_LIBROS
+# 3. PROCESAR RELACIÓN LIBROS-AUTORES
 # ==========
 
 autores_libros["id_libro"] = autores_libros["id_libro"].astype(str).str.strip()
 autores_libros["id_autor"] = autores_libros["id_autor"].astype(str).str.strip()
 
-# Si hay múltiples autores en una celda, dividirlos
-# Ejemplo de celda: "mlhz;jprz;abcd"
-autores_libros["id_autor_list"] = autores_libros["id_autor"].str.split(";")
+al = autores_libros.copy()  # Copia para no modificar el original
 
-# EXPLODE: una fila por cada autor
-al = autores_libros.explode("id_autor_list").copy()
-
-# Construir AHORA la columna id_autor a partir de la lista
-al["id_autor"] = al["id_autor_list"].astype(str).str.strip()
-
-# Ya no necesitamos la columna auxiliar
-al = al.drop(columns=["id_autor_list"])
 # ==========
 # MERGE PARA OBTENER EL TEXTO DE CADA AUTOR
 # ==========
@@ -135,5 +124,5 @@ catalogo = catalogo[columnas_existentes]
 # 6. GUARDAR CSV FINAL
 # ==========================
 
-catalogo.to_csv(SALIDA_CSV, index=False)
+catalogo.to_csv(SALIDA_CSV, index=False, lineterminator="\n")
 print(f"Catálogo generado en: {SALIDA_CSV}")
