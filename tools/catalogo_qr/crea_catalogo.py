@@ -11,7 +11,6 @@ PROJECT_ROOT = os.path.dirname(BASE)
 
 AUTORES_CSV        = os.path.join(BASE, "catalogo_qr", "autores.csv")
 AUTORES_LIBROS_CSV = os.path.join(BASE, "catalogo_qr", "libros_autores.csv")
-RESUMENES_CSV      = os.path.join(BASE, "catalogo_qr", "resumenes.csv")
 LIBROS_CSV         = os.path.join(BASE, "catalogo_qr", "libros.csv")
 
 SALIDA_CSV         = os.path.join(PROJECT_ROOT, "data", "catalogo.csv")
@@ -22,7 +21,6 @@ SALIDA_CSV         = os.path.join(PROJECT_ROOT, "data", "catalogo.csv")
 
 autores        = pd.read_csv(AUTORES_CSV)        # columnas: id_autor, nombres, apellidos
 autores_libros = pd.read_csv(AUTORES_LIBROS_CSV) # columnas: id_libro, id_autor
-resumenes      = pd.read_csv(RESUMENES_CSV)      # columnas: id_libro, resumen
 libros         = pd.read_csv(LIBROS_CSV)         # columnas: id, titulo, coleccion, ...
 
 # Asegurarnos de tener nombres de columnas coherentes
@@ -72,19 +70,11 @@ autores_por_libro = (
 )
 
 # ==========================
-# 4. UNIR LIBROS + AUTORES + RESÚMENES
+# 4. UNIR LIBROS + AUTORES
 # ==========================
 
-# 4.1 Libros + autores
 catalogo = libros.merge(
     autores_por_libro,
-    on="id_libro",
-    how="left"
-)
-
-# 4.2 Libros + resúmenes
-catalogo = catalogo.merge(
-    resumenes,
     on="id_libro",
     how="left"
 )
