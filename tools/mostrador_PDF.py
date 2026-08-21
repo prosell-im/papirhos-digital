@@ -1,8 +1,9 @@
 import os
+from textwrap import dedent
+
 BASE = os.path.dirname(os.path.dirname(__file__))
 DOCS = os.path.join(BASE, "docs")
-CSV_PATH = os.path.join(BASE, "data", "catalogo.csv")
-from textwrap import dedent
+
 def pdf_en_ficha(_id: str) -> str:
        """
        Devuelve la ruta relativa al PDF marcado si existe, o un dirección dummy

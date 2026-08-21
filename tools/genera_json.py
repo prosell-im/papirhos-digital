@@ -1,8 +1,3 @@
-from mostrador_PDF import pdf_en_ficha, bloque_pdf
-import os
-BASE = os.path.dirname(os.path.dirname(__file__))
-DOCS = os.path.join(BASE, "docs")
-CSV_PATH = os.path.join(BASE, "data", "catalogo.csv")
 import extractidatos
 def gjsn(r):
        #Recibe una fila (entrada) y la convierte en un objeto para crear la página

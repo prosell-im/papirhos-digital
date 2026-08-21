@@ -1,4 +1,3 @@
-#!/usr/bin/env
 import csv, os, json
 from operator import itemgetter
 BASE = os.path.dirname(os.path.dirname(__file__))

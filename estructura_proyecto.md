@@ -113,9 +113,5 @@ escritor_bibtex.py
 ## Posibles mejoras al código:
 - Confirmar el uso de archivos en la sección principal
 - Analizar la posibilidad de trasladar ciertos documentos a legacy files
-<<<<<<< HEAD
-- Evaluar si ciertos archivos son necesario o se pueden generar a partir del catálogo principal.
-=======
 - Evaluar si ciertos archivos son necesarios o se pueden generar a partir del catálogo principal.
->>>>>>> 9f325b5b9b354b4aa10c3ea86b5a4b6e9a076b10
 -Consistencia en los datos (archivos con más o menos libros que en otros)
