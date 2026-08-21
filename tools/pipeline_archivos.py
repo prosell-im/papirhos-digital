@@ -1,18 +1,19 @@
 import csv, os, json
-from operator import itemgetter
-BASE = os.path.dirname(os.path.dirname(__file__))
-DOCS = os.path.join(BASE, "docs")
-CSV_PATH = os.path.join(BASE, "data", "catalogo.csv")
 
 #Módulos propios
 import escritor_catalogo #Escribe el texto que se agrega al catálogo
 import crea_paginas #Crea las páginas completas de cada texto
 import genera_json
 
+BASE = os.path.dirname(os.path.dirname(__file__))
+DOCS = os.path.join(BASE, "docs")
+CSV_PATH = os.path.join(BASE, "data", "catalogo.csv")
+
 #Corre el código al ejecutar el archivo
 def main():
     
 #-------------------------------------------------------- LECTURA DE BASE DE DATOS --------------------------------------------------------
+
     #Abre la base de datos CSV
     with open(CSV_PATH, newline="",encoding="utf-8") as f:
         reader = csv.DictReader(f) #Reader de la base de datos
@@ -23,36 +24,40 @@ def main():
     orden_filas = sorted(filas,
            key = lambda r: ((r.get("autores") or ""), (r.get("titulo") or "").lower())
     ) #Ordena las filas de la lista; primero autores y después título. Regresa una lista ordenada.
+
 #------------------------------------------------------------------------------------------------------------------------------------------
 
 #-------------------------------------------------------- Escritura de catálogo  --------------------------------------------------------
+
     #Escribe el catálogo con titulo, identificador, coleccion, serie, estado y un separador; regresa una lista cuyas entradas son espacios y estos textos
     lineas = escritor_catalogo.lista_catalogo(orden_filas)
     catalogo_path = os.path.join(BASE, "docs", "catalogo.md") #Path para guardar el catálogo: BASE/docs
     with open(catalogo_path, "w", encoding = "utf-8") as fcat:
            fcat.write("\n".join(lineas))
     print("Catalogo actualizado")
+
 #------------------------------------------------------------------------------------------------------------------------------------------
 
 #-------------------------------------------------------- JSON, Buscador y páginas --------------------------------------------------------
+
     #Buscalibros
     DATA_DIR = os.path.join(DOCS, "data") #Establece dirección para el archivo JSON (DOCS/DATA)
     os.makedirs(DATA_DIR, exist_ok = True) #Verifica que exista para no sobrescribir
     data_json = []
+
     for fila in filas: #Genera catálogo JSON y escribe las páginas de las fichas
            data_json.append(genera_json.gjsn(fila))
            crea_paginas.fila_a_obj(fila)
-    json_path = os.path.join(DATA_DIR, "catalogo-unsort.json") #Path del JSON
-    json_path_sorted = os.path.join(DATA_DIR, "catalogo.json") #Path del JSON
+
+    json_path = os.path.join(DATA_DIR, "catalogo.json") #Path del JSON
+
     with open(json_path, "w", encoding = "utf-8") as jf: #Abriendo el archivo JSON como JSNfile
            json.dump(data_json,jf,ensure_ascii = False, indent = 2)
+
     print("JSON exportado:", json_path)
-    with open(json_path,'r',encoding = "utf8") as in_file, open(json_path_sorted,'w',encoding = "utf8") as out_file:
-           data = json.load(in_file)
-           data.sort(key=itemgetter('titulo'))
-           ordenado = json.dumps(data,ensure_ascii = False, indent = 2)
-           print(ordenado,file=out_file)
+
 #------------------------------------------------------------------------------------------------------------------------------------------
+
 if __name__ == "__main__":
             main()
 

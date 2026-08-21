@@ -98,7 +98,6 @@
     inpAutor.addEventListener('input', filtrar);
     inpTitulo.addEventListener('input', filtrar);
     selOrder.addEventListener('change',filtrar);
-    render(libros);
         const btnClear = document.querySelector('#btn-clear');
     function limpiar(){
         selColeccion.value = '';
@@ -140,6 +139,7 @@
             default: return cmpTituloAsc;
         }
     }
+    filtrar();
 })();
 
 </script>
