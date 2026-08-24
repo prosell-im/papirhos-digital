@@ -1,10 +1,10 @@
 ---
 title: "Clases características"
 authors: [[['John'], ['Milnor']], [['James'], ['Stasheff']]]
-tags: [Papirhos, Textos, 2999]
+tags: [Papirhos, Textos]
 ---
 # Clases características
-<div class = "chips"><span class ="chip"></span class ="icon">🏷</span> Textos</span> <span class ="chip"></span class ="icon">📚</span> Papirhos</span> <span class ="chip"></span class ="icon">🗓</span> 2999</span> <span class ="chip"></span class ="icon">ℹ️</span> Físico</span></div>
+<div class = "chips"><span class ="chip"></span class ="icon">🏷</span> Textos</span> <span class ="chip"></span class ="icon">📚</span> Papirhos</span> <span class ="chip"></span class ="icon">ℹ️</span> Físico</span></div>
 
 <p align = "left"> <img src = "../../assets/covers/pap-tex-7.png" width="500" height="600"></p>
 
@@ -19,11 +19,8 @@ Resumen proximamente
 | Autores | John Milnor, James Stasheff |
 | Colección | Papirhos |
 | Serie | Textos |
-| Año | 2999 |
 | Editorial | Instituto de Matemáticas, UNAM |
-| Edición | 0 |
 | ISBN (Colección) | 000 |
-| ISBN (Texto) | 000 |
 
 ## Descargas
 <a class="md-button data-book-id=pap-tex-7 download-link" data-book-id="pap-tex-7" href = "pap-tex-7_mark.pdf" target = "_blank" rel ="noopener" > Abrir PDF </a>
@@ -39,7 +36,7 @@ Resumen proximamente
     Documento con marca de agua para distribución **digital**.
 
 ## Cómo citar
-> John Milnor, James Stasheff. (2999). *Clases características*. Instituto de Matemáticas, UNAM, 0
+> John Milnor, James Stasheff. *Clases características*. Instituto de Matemáticas, UNAM
 
 <details>
 <summary>BibTeX</summary>
@@ -47,7 +44,7 @@ Resumen proximamente
 @BOOK{pap-tex-7, 
 title = {Clases características}, 
 author = {Milnor, John and Stasheff, James}, 
-year = {2999}, 
+year = {}, 
 publisher = {Instituto de Matemáticas, UNAM}, 
 address = {México}}
 </textarea>

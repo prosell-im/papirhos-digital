@@ -1,10 +1,10 @@
 ---
 title: "Proceedings of the Workshop on Holomorphic Dynamics"
 authors: [[['Patricia'], ['Dominguez', 'Soto']], [['Peter'], ['Makienko']], [['Carlos'], ['Cabrera', 'Ocañas']]]
-tags: [Papirhos, Actas, 2999]
+tags: [Papirhos, Actas]
 ---
 # Proceedings of the Workshop on Holomorphic Dynamics
-<div class = "chips"><span class ="chip"></span class ="icon">🏷</span> Actas</span> <span class ="chip"></span class ="icon">📚</span> Papirhos</span> <span class ="chip"></span class ="icon">🗓</span> 2999</span> <span class ="chip"></span class ="icon">ℹ️</span> Físico</span></div>
+<div class = "chips"><span class ="chip"></span class ="icon">🏷</span> Actas</span> <span class ="chip"></span class ="icon">📚</span> Papirhos</span> <span class ="chip"></span class ="icon">ℹ️</span> Físico</span></div>
 
 <p align = "left"> <img src = "../../assets/covers/pap-act-1.png" width="500" height="600"></p>
 
@@ -19,11 +19,8 @@ Resumen proximamente
 | Autores | Patricia Dominguez Soto, Peter Makienko, Carlos Cabrera Ocañas |
 | Colección | Papirhos |
 | Serie | Actas |
-| Año | 2999 |
 | Editorial | Instituto de Matemáticas, UNAM |
-| Edición | 0 |
 | ISBN (Colección) | 000 |
-| ISBN (Texto) | 000 |
 
 ## Descargas
 <a class="md-button data-book-id=pap-act-1 download-link" data-book-id="pap-act-1" href = "pap-act-1_mark.pdf" target = "_blank" rel ="noopener" > Abrir PDF </a>
@@ -39,7 +36,7 @@ Resumen proximamente
     Documento con marca de agua para distribución **digital**.
 
 ## Cómo citar
-> Patricia Dominguez Soto, Peter Makienko, Carlos Cabrera Ocañas. (2999). *Proceedings of the Workshop on Holomorphic Dynamics*. Instituto de Matemáticas, UNAM, 0
+> Patricia Dominguez Soto, Peter Makienko, Carlos Cabrera Ocañas. *Proceedings of the Workshop on Holomorphic Dynamics*. Instituto de Matemáticas, UNAM
 
 <details>
 <summary>BibTeX</summary>
@@ -47,7 +44,7 @@ Resumen proximamente
 @BOOK{pap-act-1, 
 title = {Proceedings of the Workshop on Holomorphic Dynamics}, 
 author = {Dominguez, Patricia and Makienko, Peter and Cabrera, Carlos}, 
-year = {2999}, 
+year = {}, 
 publisher = {Instituto de Matemáticas, UNAM}, 
 address = {México}}
 </textarea>

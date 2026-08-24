@@ -1,10 +1,10 @@
 ---
 title: "Curso breve de geometría proyectiva"
 authors: [[['Felipe'], ['Cano']], [['Beatriz'], ['Molina-Samper']], [['Fernando'], ['Sanz']]]
-tags: [Papirhos, Textos, 2999]
+tags: [Papirhos, Textos]
 ---
 # Curso breve de geometría proyectiva
-<div class = "chips"><span class ="chip"></span class ="icon">🏷</span> Textos</span> <span class ="chip"></span class ="icon">📚</span> Papirhos</span> <span class ="chip"></span class ="icon">🗓</span> 2999</span> <span class ="chip"></span class ="icon">ℹ️</span> Físico</span></div>
+<div class = "chips"><span class ="chip"></span class ="icon">🏷</span> Textos</span> <span class ="chip"></span class ="icon">📚</span> Papirhos</span> <span class ="chip"></span class ="icon">ℹ️</span> Físico</span></div>
 
 <p align = "left"> <img src = "../../assets/covers/pap-tex-11.png" width="500" height="600"></p>
 
@@ -19,11 +19,8 @@ Resumen proximamente
 | Autores | Felipe Cano, Beatriz Molina-Samper, Fernando Sanz |
 | Colección | Papirhos |
 | Serie | Textos |
-| Año | 2999 |
 | Editorial | Instituto de Matemáticas, UNAM |
-| Edición | 0 |
 | ISBN (Colección) | 000 |
-| ISBN (Texto) | 000 |
 
 ## Descargas
 <a class="md-button data-book-id=pap-tex-11 download-link" data-book-id="pap-tex-11" href = "pap-tex-11_mark.pdf" target = "_blank" rel ="noopener" > Abrir PDF </a>
@@ -39,7 +36,7 @@ Resumen proximamente
     Documento con marca de agua para distribución **digital**.
 
 ## Cómo citar
-> Felipe Cano, Beatriz Molina-Samper, Fernando Sanz. (2999). *Curso breve de geometría proyectiva*. Instituto de Matemáticas, UNAM, 0
+> Felipe Cano, Beatriz Molina-Samper, Fernando Sanz. *Curso breve de geometría proyectiva*. Instituto de Matemáticas, UNAM
 
 <details>
 <summary>BibTeX</summary>
@@ -47,7 +44,7 @@ Resumen proximamente
 @BOOK{pap-tex-11, 
 title = {Curso breve de geometría proyectiva}, 
 author = {Cano, Felipe and Molina-Samper, Beatriz and Sanz, Fernando}, 
-year = {2999}, 
+year = {}, 
 publisher = {Instituto de Matemáticas, UNAM}, 
 address = {México}}
 </textarea>

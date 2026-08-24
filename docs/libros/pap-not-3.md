@@ -1,10 +1,10 @@
 ---
 title: "Teoría de las gráficas: algunas aportaciones desde México"
 authors: [[['Julian'], ['Fresán']], [['Ilán'], ['Goldfeder']], [['Nahid'], ['Javier']], [['Rita'], ['Zuazua']]]
-tags: [Papirhos, Notas, 2999]
+tags: [Papirhos, Notas]
 ---
 # Teoría de las gráficas: algunas aportaciones desde México
-<div class = "chips"><span class ="chip"></span class ="icon">🏷</span> Notas</span> <span class ="chip"></span class ="icon">📚</span> Papirhos</span> <span class ="chip"></span class ="icon">🗓</span> 2999</span> <span class ="chip"></span class ="icon">ℹ️</span> Físico</span></div>
+<div class = "chips"><span class ="chip"></span class ="icon">🏷</span> Notas</span> <span class ="chip"></span class ="icon">📚</span> Papirhos</span> <span class ="chip"></span class ="icon">ℹ️</span> Físico</span></div>
 
 <p align = "left"> <img src = "../../assets/covers/pap-not-3.png" width="500" height="600"></p>
 
@@ -19,11 +19,8 @@ Resumen proximamente
 | Autores | Julian Fresán, Ilán Goldfeder, Nahid Javier, Rita Zuazua |
 | Colección | Papirhos |
 | Serie | Notas |
-| Año | 2999 |
 | Editorial | Instituto de Matemáticas, UNAM |
-| Edición | 0 |
 | ISBN (Colección) | 000 |
-| ISBN (Texto) | 000 |
 
 ## Descargas
 <a class="md-button data-book-id=pap-not-3 download-link" data-book-id="pap-not-3" href = "pap-not-3_mark.pdf" target = "_blank" rel ="noopener" > Abrir PDF </a>
@@ -39,7 +36,7 @@ Resumen proximamente
     Documento con marca de agua para distribución **digital**.
 
 ## Cómo citar
-> Julian Fresán, Ilán Goldfeder, Nahid Javier, Rita Zuazua. (2999). *Teoría de las gráficas: algunas aportaciones desde México*. Instituto de Matemáticas, UNAM, 0
+> Julian Fresán, Ilán Goldfeder, Nahid Javier, Rita Zuazua. *Teoría de las gráficas: algunas aportaciones desde México*. Instituto de Matemáticas, UNAM
 
 <details>
 <summary>BibTeX</summary>
@@ -47,7 +44,7 @@ Resumen proximamente
 @BOOK{pap-not-3, 
 title = {Teoría de las gráficas: algunas aportaciones desde México}, 
 author = {Fresán, Julian and Goldfeder, Ilán and Javier, Nahid and Zuazua, Rita}, 
-year = {2999}, 
+year = {}, 
 publisher = {Instituto de Matemáticas, UNAM}, 
 address = {México}}
 </textarea>

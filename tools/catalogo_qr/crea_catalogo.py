@@ -10,8 +10,9 @@ PROJECT_ROOT = os.path.dirname(BASE)
 
 
 AUTORES_CSV        = os.path.join(BASE, "catalogo_qr", "autores.csv")
-AUTORES_LIBROS_CSV = os.path.join(BASE, "catalogo_qr", "libros_autores.csv")
+LIBROS_AUTORES_CSV = os.path.join(BASE, "catalogo_qr", "libros_autores.csv")
 LIBROS_CSV         = os.path.join(BASE, "catalogo_qr", "libros.csv")
+EDICIONES_CSV      = os.path.join(BASE, "catalogo_qr", "ediciones.csv")
 
 SALIDA_CSV         = os.path.join(PROJECT_ROOT, "data", "catalogo.csv")
 
@@ -20,13 +21,11 @@ SALIDA_CSV         = os.path.join(PROJECT_ROOT, "data", "catalogo.csv")
 # ==========================
 
 autores        = pd.read_csv(AUTORES_CSV)        # columnas: id_autor, nombres, apellidos
-autores_libros = pd.read_csv(AUTORES_LIBROS_CSV) # columnas: id_libro, id_autor
-libros         = pd.read_csv(LIBROS_CSV)         # columnas: id, titulo, coleccion, ...
+libros_autores = pd.read_csv(LIBROS_AUTORES_CSV) # columnas: id_libro, id_autor
+libros         = pd.read_csv(LIBROS_CSV)         # columnas: id_libro, titulo, coleccion, ...
+ediciones      = pd.read_csv(EDICIONES_CSV)      # columnas: id_edicion, id_libro, edicion, reimpresion, anio, isbn_libro, editorial
 
 # Asegurarnos de tener nombres de columnas coherentes
-# (renombramos id de libros a id_libro para los joins)
-# Libros: renombrar id → id_libro
-libros = libros.rename(columns={"id": "id_libro"})
 
 # ==========
 # AUTORES
@@ -41,10 +40,17 @@ autores["autor_fmt"] = autores["nombres"] + ">" + autores["apellidos"]
 # 3. PROCESAR RELACIÓN LIBROS-AUTORES
 # ==========
 
-autores_libros["id_libro"] = autores_libros["id_libro"].astype(str).str.strip()
-autores_libros["id_autor"] = autores_libros["id_autor"].astype(str).str.strip()
+libros_autores["id_libro"] = libros_autores["id_libro"].astype(str).str.strip()
+libros_autores["id_autor"] = libros_autores["id_autor"].astype(str).str.strip()
 
-al = autores_libros.copy()  # Copia para no modificar el original
+al = libros_autores.copy()  # Copia para no modificar el original
+
+# ==========
+# EDICIONES
+# ==========
+
+ediciones["id_edicion"] = ediciones["id_edicion"].astype(str).str.strip()
+ediciones["id_libro"] = ediciones["id_libro"].astype(str).str.strip()
 
 # ==========
 # MERGE PARA OBTENER EL TEXTO DE CADA AUTOR
@@ -79,11 +85,18 @@ catalogo = libros.merge(
     how="left"
 )
 
+catalogo = catalogo.merge(
+    ediciones[["id_libro", "edicion", "reimpresion", "anio", "isbn_libro", "editorial"]],
+    on="id_libro",
+    how="left"
+)
+
 # Volver a llamar 'id_libro' simplemente 'id' para el CSV final
 catalogo = catalogo.rename(columns={"id_libro": "id"})
-catalogo["anio"] = catalogo["anio"].astype(str).str.replace(".0", "", regex=False)
-catalogo["edicion"] = catalogo["edicion"].astype(str).str.replace(".0", "", regex=False)
-catalogo["tomo"] = catalogo["tomo"].astype(str).str.replace(".0", "", regex=False)
+catalogo["anio"] = catalogo["anio"].fillna("").astype(str).str.replace(".0", "", regex=False)
+catalogo["edicion"] = catalogo["edicion"].fillna("").astype(str).str.replace(".0", "", regex=False)
+catalogo["reimpresion"] = catalogo["reimpresion"].fillna("").astype(str).str.replace(".0", "", regex=False)
+catalogo["tomo"] = catalogo["tomo"].fillna("").astype(str).str.replace(".0", "", regex=False)
 
 # ==========================
 # 5. ORDENAR COLUMNAS COMO QUIERES
@@ -102,6 +115,7 @@ columnas_finales = [
     "anio",
     "editorial",
     "edicion",
+    "reimpresion",
     "resumen",
     "estado",
 ]

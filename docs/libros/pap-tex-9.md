@@ -1,10 +1,10 @@
 ---
 title: "Introducción al álgebra lineal"
 authors: [[['Felipe'], ['Zaldivar']]]
-tags: [Papirhos, Textos, 2999]
+tags: [Papirhos, Textos]
 ---
 # Introducción al álgebra lineal
-<div class = "chips"><span class ="chip"></span class ="icon">🏷</span> Textos</span> <span class ="chip"></span class ="icon">📚</span> Papirhos</span> <span class ="chip"></span class ="icon">🗓</span> 2999</span> <span class ="chip"></span class ="icon">ℹ️</span> Físico</span></div>
+<div class = "chips"><span class ="chip"></span class ="icon">🏷</span> Textos</span> <span class ="chip"></span class ="icon">📚</span> Papirhos</span> <span class ="chip"></span class ="icon">ℹ️</span> Físico</span></div>
 
 <p align = "left"> <img src = "../../assets/covers/pap-tex-9.png" width="500" height="600"></p>
 
@@ -19,11 +19,8 @@ Resumen proximamente
 | Autores | Felipe Zaldivar |
 | Colección | Papirhos |
 | Serie | Textos |
-| Año | 2999 |
 | Editorial | Instituto de Matemáticas, UNAM |
-| Edición | 0 |
 | ISBN (Colección) | 000 |
-| ISBN (Texto) | 000 |
 
 ## Descargas
 <a class="md-button data-book-id=pap-tex-9 download-link" data-book-id="pap-tex-9" href = "pap-tex-9_mark.pdf" target = "_blank" rel ="noopener" > Abrir PDF </a>
@@ -39,7 +36,7 @@ Resumen proximamente
     Documento con marca de agua para distribución **digital**.
 
 ## Cómo citar
-> Felipe Zaldivar. (2999). *Introducción al álgebra lineal*. Instituto de Matemáticas, UNAM, 0
+> Felipe Zaldivar. *Introducción al álgebra lineal*. Instituto de Matemáticas, UNAM
 
 <details>
 <summary>BibTeX</summary>
@@ -47,7 +44,7 @@ Resumen proximamente
 @BOOK{pap-tex-9, 
 title = {Introducción al álgebra lineal}, 
 author = {Zaldivar, Felipe}, 
-year = {2999}, 
+year = {}, 
 publisher = {Instituto de Matemáticas, UNAM}, 
 address = {México}}
 </textarea>

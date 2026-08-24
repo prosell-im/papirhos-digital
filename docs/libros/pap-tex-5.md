@@ -1,10 +1,10 @@
 ---
 title: "Geometría euclidiana bidimensional y su grupo de transformaciones"
 authors: [[['Manuel'], ['Cruz']], [['Montserrat'], ['García']]]
-tags: [Papirhos, Textos, 2999]
+tags: [Papirhos, Textos]
 ---
 # Geometría euclidiana bidimensional y su grupo de transformaciones
-<div class = "chips"><span class ="chip"></span class ="icon">🏷</span> Textos</span> <span class ="chip"></span class ="icon">📚</span> Papirhos</span> <span class ="chip"></span class ="icon">🗓</span> 2999</span> <span class ="chip"></span class ="icon">ℹ️</span> Físico</span></div>
+<div class = "chips"><span class ="chip"></span class ="icon">🏷</span> Textos</span> <span class ="chip"></span class ="icon">📚</span> Papirhos</span> <span class ="chip"></span class ="icon">ℹ️</span> Físico</span></div>
 
 <p align = "left"> <img src = "../../assets/covers/pap-tex-5.png" width="500" height="600"></p>
 
@@ -19,11 +19,8 @@ Resumen proximamente
 | Autores | Manuel Cruz, Montserrat García |
 | Colección | Papirhos |
 | Serie | Textos |
-| Año | 2999 |
 | Editorial | Instituto de Matemáticas, UNAM |
-| Edición | 0 |
 | ISBN (Colección) | 000 |
-| ISBN (Texto) | 000 |
 
 ## Descargas
 <a class="md-button data-book-id=pap-tex-5 download-link" data-book-id="pap-tex-5" href = "pap-tex-5_mark.pdf" target = "_blank" rel ="noopener" > Abrir PDF </a>
@@ -39,7 +36,7 @@ Resumen proximamente
     Documento con marca de agua para distribución **digital**.
 
 ## Cómo citar
-> Manuel Cruz, Montserrat García. (2999). *Geometría euclidiana bidimensional y su grupo de transformaciones*. Instituto de Matemáticas, UNAM, 0
+> Manuel Cruz, Montserrat García. *Geometría euclidiana bidimensional y su grupo de transformaciones*. Instituto de Matemáticas, UNAM
 
 <details>
 <summary>BibTeX</summary>
@@ -47,7 +44,7 @@ Resumen proximamente
 @BOOK{pap-tex-5, 
 title = {Geometría euclidiana bidimensional y su grupo de transformaciones}, 
 author = {Cruz, Manuel and García, Montserrat}, 
-year = {2999}, 
+year = {}, 
 publisher = {Instituto de Matemáticas, UNAM}, 
 address = {México}}
 </textarea>

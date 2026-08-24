@@ -1,10 +1,10 @@
 ---
 title: "Por la senda de los círculos"
 authors: [[['Cecilia'], ['Neve', 'Jimenez']], [['Laura'], ['Rosales', 'Ortiz']]]
-tags: [Papirhos, Mixbaal, nan]
+tags: [Papirhos, Mixbaal]
 ---
 # Por la senda de los círculos
-<div class = "chips"><span class ="chip"></span class ="icon">🏷</span> Mixbaal</span> <span class ="chip"></span class ="icon">📚</span> Papirhos</span> <span class ="chip"></span class ="icon">🗓</span> nan</span> <span class ="chip"></span class ="icon">ℹ️</span> por recibir</span></div>
+<div class = "chips"><span class ="chip"></span class ="icon">🏷</span> Mixbaal</span> <span class ="chip"></span class ="icon">📚</span> Papirhos</span> <span class ="chip"></span class ="icon">ℹ️</span> por recibir</span></div>
 
 <p align = "left"> <img src = "../../assets/covers/pap-mix-1.jpg" width="500" height="600"></p>
 
@@ -34,7 +34,7 @@ Resumen proximamente
     Documento con marca de agua para distribución **digital**.
 
 ## Cómo citar
-> Cecilia Neve Jimenez, Laura Rosales Ortiz. (nan). *Por la senda de los círculos*. , nan
+> Cecilia Neve Jimenez, Laura Rosales Ortiz. *Por la senda de los círculos*. 
 
 <details>
 <summary>BibTeX</summary>
@@ -42,7 +42,7 @@ Resumen proximamente
 @BOOK{pap-mix-1, 
 title = {Por la senda de los círculos}, 
 author = {Neve, Cecilia and Rosales, Laura}, 
-year = {nan}, 
+year = {}, 
 publisher = {}, 
 address = {México}}
 </textarea>
