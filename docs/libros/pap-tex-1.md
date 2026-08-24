@@ -13,6 +13,14 @@ tags: [Papirhos, Textos, 2014]
 ## Resumen
 Resumen 5
 
+## Ediciones disponibles
+### Edición 3
+
+- **Año:** 2014
+- **Editorial:** Instituto de Matemáticas, UNAM
+- **ISBN:** 978-607-02-9435-8
+
+
 ## Metadatos
 |  |  |
 |---|---|

@@ -13,6 +13,12 @@ tags: [Papirhos, Icosaedro]
 ## Resumen
 Resumen proximamente
 
+## Ediciones disponibles
+### Edición sin especificar
+
+- **Editorial:** Instituto de Matemáticas, UNAM
+
+
 ## Metadatos
 |  |  |
 |---|---|

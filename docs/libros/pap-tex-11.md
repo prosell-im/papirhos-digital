@@ -13,6 +13,12 @@ tags: [Papirhos, Textos]
 ## Resumen
 Resumen proximamente
 
+## Ediciones disponibles
+### Edición sin especificar
+
+- **Editorial:** Instituto de Matemáticas, UNAM
+
+
 ## Metadatos
 |  |  |
 |---|---|

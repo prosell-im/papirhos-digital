@@ -86,7 +86,7 @@ catalogo = libros.merge(
 )
 
 catalogo = catalogo.merge(
-    ediciones[["id_libro", "edicion", "reimpresion", "anio", "isbn_libro", "editorial"]],
+    ediciones[["id_edicion", "id_libro", "edicion", "reimpresion", "anio", "isbn_libro", "editorial"]],
     on="id_libro",
     how="left"
 )
@@ -104,6 +104,7 @@ catalogo["tomo"] = catalogo["tomo"].fillna("").astype(str).str.replace(".0", "",
 
 columnas_finales = [
     "id",
+    "id_edicion",
     "titulo",
     "autores",
     "coleccion",

@@ -13,6 +13,14 @@ tags: [Papirhos, Textos, 2017]
 ## Resumen
 Resumen 3
 
+## Ediciones disponibles
+### Edición 1
+
+- **Año:** 2017
+- **Editorial:** Instituto de Matemáticas, UNAM
+- **ISBN:** 978-607-02-8824-1
+
+
 ## Metadatos
 |  |  |
 |---|---|

@@ -13,6 +13,14 @@ tags: [Papirhos, Textos, 2016]
 ## Resumen
 Resuemn 6
 
+## Ediciones disponibles
+### Edición 1
+
+- **Año:** 2016
+- **Editorial:** Instituto de Matemáticas, UNAM
+- **ISBN:** 978-607-02-7814-3
+
+
 ## Metadatos
 |  |  |
 |---|---|

@@ -13,6 +13,12 @@ tags: [Papirhos, Mixbaal]
 ## Resumen
 Resumen proximamente
 
+## Ediciones disponibles
+### Edición sin especificar
+
+Información editorial pendiente.
+
+
 ## Metadatos
 |  |  |
 |---|---|

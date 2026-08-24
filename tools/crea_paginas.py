@@ -7,10 +7,8 @@ import escribe_metadatos
 BASE = os.path.dirname(os.path.dirname(__file__))
 DOCS = os.path.join(BASE, "docs")
 
-def fila_a_obj(r):
-       #Recibe una fila (entrada) y la convierte en un objeto para crear la página
-       #Limpiador
-       #cada fila (del diccionario) es re-hecha para que los campos con entradas múltiples (e.g., múltiples autores) se vuelvan una lista
+def fila_a_obj(filas_libro):
+       r = filas_libro[0]  # Usamos la primera fila como referencia para los metadatos del libro
        autores, anio, _id, titulo, coleccion, serie, tomo, editorial, edicion, isbn_col, isbn_libro, estado, resumen, downs = extractidatos.extractidatos(r)
 
        #Autores para citar:
@@ -36,6 +34,44 @@ def fila_a_obj(r):
        #Tabla de metadatos
        metadatos = escribe_metadatos.escribe_metadatos(autores, coleccion, serie, tomo, anio, editorial, edicion, isbn_col, isbn_libro)
 
+
+       bloques_ediciones = []
+
+       for fila in filas_libro:
+              id_edicion = (fila.get("id_edicion") or "").strip()
+              num_edicion = (fila.get("edicion") or "").strip()
+              reimpresion = (fila.get("reimpresion") or "").strip()
+              anio_edicion = (fila.get("anio") or "").strip()
+              isbn_edicion = (fila.get("isbn_libro") or "").strip()
+              editorial_edicion = (fila.get("editorial") or "").strip()
+
+              titulo_edicion = (
+                     f"Edición {num_edicion}"
+                     if num_edicion
+                     else "Edición sin especificar"
+              )
+
+              datos_edicion = [
+                     f"- **Año:** {anio_edicion}" if anio_edicion else "",
+                     f"- **Editorial:** {editorial_edicion}" if editorial_edicion else "",
+                     f"- **ISBN:** {isbn_edicion}" if isbn_edicion else "",
+                     f"- **Reimpresión:** {reimpresion}" if reimpresion else "",
+              ]
+
+              datos_edicion = "\n".join(
+                     dato for dato in datos_edicion if dato
+              )
+
+              bloques_ediciones.append(
+                     f"""### {titulo_edicion}
+
+{datos_edicion if datos_edicion else "Información editorial pendiente."}
+"""
+              )
+
+       seccion_ediciones = "\n".join(bloques_ediciones)
+
+  
        #YAML front matter para búsqueda SEO
        front_matter = dedent(f"""\
        ---
@@ -54,6 +90,9 @@ def fila_a_obj(r):
 
 ## Resumen
 {(resumen if resumen else "_Resumen próximamente._")}
+
+## Ediciones disponibles
+{seccion_ediciones}
 
 ## Metadatos
 {metadatos}

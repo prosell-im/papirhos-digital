@@ -13,6 +13,14 @@ tags: [Papirhos, Textos, 2020]
 ## Resumen
 Resumen proximamente
 
+## Ediciones disponibles
+### Edición 1
+
+- **Año:** 2020
+- **Editorial:** Instituto de Matemáticas, UNAM
+- **ISBN:** 978-607-30-3681-8
+
+
 ## Metadatos
 |  |  |
 |---|---|

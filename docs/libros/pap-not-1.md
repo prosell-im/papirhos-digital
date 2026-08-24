@@ -13,6 +13,14 @@ tags: [Papirhos, Notas, 2017]
 ## Resumen
 Resumen proximamente
 
+## Ediciones disponibles
+### Edición 1
+
+- **Año:** 2017
+- **Editorial:** Instituto de Matemáticas, UNAM
+- **ISBN:** 978-607-02-9845-5
+
+
 ## Metadatos
 |  |  |
 |---|---|

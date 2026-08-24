@@ -13,6 +13,14 @@ tags: [Cuadernos de olimpiadas de matemáticas, 2018]
 ## Resumen
 Resumen 2
 
+## Ediciones disponibles
+### Edición 2
+
+- **Año:** 2018
+- **Editorial:** Instituto de Matemáticas, UNAM
+- **ISBN:** 978-607-02-85882
+
+
 ## Metadatos
 |  |  |
 |---|---|
