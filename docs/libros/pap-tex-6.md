@@ -14,11 +14,44 @@ tags: [Papirhos, Textos, 2017]
 Resumen 3
 
 ## Ediciones disponibles
-### Edición 1
 
-- **Año:** 2017
-- **Editorial:** Instituto de Matemáticas, UNAM
-- **ISBN:** 978-607-02-8824-1
+<div class="edition-selector" id="edition-selector-pap-tex-6">
+    <div class="edition-buttons">
+        <button type="button" class="edition-button active" data-target="edicion-pap-tex-6-0">Edición 1</button>
+    </div>
+
+    <div class="edition-content">
+        <div id="edicion-pap-tex-6-0" class="edition-panel"><h3>Edición 1</h3><ul><li><strong>Año:</strong> 2017</li><li><strong>Editorial:</strong> Instituto de Matemáticas, UNAM</li><li><strong>ISBN:</strong> 978-607-02-8824-1</li></ul></div>
+    </div>
+</div>
+
+<script>
+(() => {
+    const selector = document.getElementById("edition-selector-pap-tex-6");
+
+    if (!selector) return;
+
+    const botones = selector.querySelectorAll(".edition-button");
+    const paneles = selector.querySelectorAll(".edition-panel");
+
+    botones.forEach((boton) => {
+        boton.addEventListener("click", () => {
+            botones.forEach((b) => b.classList.remove("active"));
+            paneles.forEach((panel) => panel.hidden = true);
+
+            boton.classList.add("active");
+
+            const panelActivo = selector.querySelector(
+                "#" + boton.dataset.target
+            );
+
+            if (panelActivo) {
+                panelActivo.hidden = false;
+            }
+        });
+    });
+})();
+</script>
 
 
 ## Metadatos

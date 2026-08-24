@@ -14,11 +14,44 @@ tags: [Papirhos, Textos, 2014]
 Resumen 5
 
 ## Ediciones disponibles
-### Edición 3
 
-- **Año:** 2014
-- **Editorial:** Instituto de Matemáticas, UNAM
-- **ISBN:** 978-607-02-9435-8
+<div class="edition-selector" id="edition-selector-pap-tex-1">
+    <div class="edition-buttons">
+        <button type="button" class="edition-button active" data-target="edicion-pap-tex-1-0">Edición 3</button>
+    </div>
+
+    <div class="edition-content">
+        <div id="edicion-pap-tex-1-0" class="edition-panel"><h3>Edición 3</h3><ul><li><strong>Año:</strong> 2014</li><li><strong>Editorial:</strong> Instituto de Matemáticas, UNAM</li><li><strong>ISBN:</strong> 978-607-02-9435-8</li></ul></div>
+    </div>
+</div>
+
+<script>
+(() => {
+    const selector = document.getElementById("edition-selector-pap-tex-1");
+
+    if (!selector) return;
+
+    const botones = selector.querySelectorAll(".edition-button");
+    const paneles = selector.querySelectorAll(".edition-panel");
+
+    botones.forEach((boton) => {
+        boton.addEventListener("click", () => {
+            botones.forEach((b) => b.classList.remove("active"));
+            paneles.forEach((panel) => panel.hidden = true);
+
+            boton.classList.add("active");
+
+            const panelActivo = selector.querySelector(
+                "#" + boton.dataset.target
+            );
+
+            if (panelActivo) {
+                panelActivo.hidden = false;
+            }
+        });
+    });
+})();
+</script>
 
 
 ## Metadatos

@@ -34,43 +34,131 @@ def fila_a_obj(filas_libro):
        #Tabla de metadatos
        metadatos = escribe_metadatos.escribe_metadatos(autores, coleccion, serie, tomo, anio, editorial, edicion, isbn_col, isbn_libro)
 
-
-       bloques_ediciones = []
+       # Selector de ediciones
+       ediciones = []
 
        for fila in filas_libro:
-              id_edicion = (fila.get("id_edicion") or "").strip()
-              num_edicion = (fila.get("edicion") or "").strip()
-              reimpresion = (fila.get("reimpresion") or "").strip()
-              anio_edicion = (fila.get("anio") or "").strip()
-              isbn_edicion = (fila.get("isbn_libro") or "").strip()
-              editorial_edicion = (fila.get("editorial") or "").strip()
+              ediciones.append({
+                     "id_edicion": (fila.get("id_edicion") or "").strip(),
+                     "edicion": (fila.get("edicion") or "").strip(),
+                     "reimpresion": (fila.get("reimpresion") or "").strip(),
+                     "anio": (fila.get("anio") or "").strip(),
+                     "isbn_libro": (fila.get("isbn_libro") or "").strip(),
+                     "editorial": (fila.get("editorial") or "").strip(),
+              })
 
-              titulo_edicion = (
-                     f"Edición {num_edicion}"
-                     if num_edicion
-                     else "Edición sin especificar"
+       # Coloca primero la edición con el número más alto.
+       # Si el número de edición es desconocido, queda al final.
+       def numero_edicion(valor):
+              try:
+                     return int(float(valor))
+              except (ValueError, TypeError):
+                     return -1
+
+       ediciones.sort(
+              key=lambda e: numero_edicion(e["edicion"]),
+              reverse=True
+       )
+
+       botones_ediciones = []
+       paneles_ediciones = []
+
+       for i, info_edicion in enumerate(ediciones):
+              id_panel = f"edicion-{_id}-{i}"
+
+              if info_edicion["edicion"]:
+                     etiqueta = f"Edición {info_edicion['edicion']}"
+              else:
+                     etiqueta = "Edición sin especificar"
+
+              if info_edicion["reimpresion"]:
+                     etiqueta += f" · Reimpresión {info_edicion['reimpresion']}"
+
+              clase_activa = " active" if i == 0 else ""
+
+              botones_ediciones.append(
+                     f'<button type="button" '
+                     f'class="edition-button{clase_activa}" '
+                     f'data-target="{id_panel}">'
+                     f'{etiqueta}'
+                     f'</button>'
               )
 
-              datos_edicion = [
-                     f"- **Año:** {anio_edicion}" if anio_edicion else "",
-                     f"- **Editorial:** {editorial_edicion}" if editorial_edicion else "",
-                     f"- **ISBN:** {isbn_edicion}" if isbn_edicion else "",
-                     f"- **Reimpresión:** {reimpresion}" if reimpresion else "",
-              ]
+              datos = []
 
-              datos_edicion = "\n".join(
-                     dato for dato in datos_edicion if dato
+              if info_edicion["anio"]:
+                     datos.append(
+                            f"<li><strong>Año:</strong> {info_edicion['anio']}</li>"
+                     )
+
+              if info_edicion["editorial"]:
+                     datos.append(
+                            f"<li><strong>Editorial:</strong> {info_edicion['editorial']}</li>"
+                     )
+
+              if info_edicion["isbn_libro"]:
+                     datos.append(
+                            f"<li><strong>ISBN:</strong> {info_edicion['isbn_libro']}</li>"
+                     )
+
+              if info_edicion["reimpresion"]:
+                     datos.append(
+                            f"<li><strong>Reimpresión:</strong> {info_edicion['reimpresion']}</li>"
+                     )
+
+              if datos:
+                     contenido_edicion = f"<ul>{''.join(datos)}</ul>"
+              else:
+                     contenido_edicion = "<p><em>Información editorial pendiente.</em></p>"
+
+              oculto = "" if i == 0 else " hidden"
+
+              paneles_ediciones.append(
+                     f'<div id="{id_panel}" class="edition-panel"{oculto}>'
+                     f'<h3>{etiqueta}</h3>'
+                     f'{contenido_edicion}'
+                     f'</div>'
               )
 
-              bloques_ediciones.append(
-                     f"""### {titulo_edicion}
+       selector_ediciones = f"""
+<div class="edition-selector" id="edition-selector-{_id}">
+    <div class="edition-buttons">
+        {''.join(botones_ediciones)}
+    </div>
 
-{datos_edicion if datos_edicion else "Información editorial pendiente."}
+    <div class="edition-content">
+        {''.join(paneles_ediciones)}
+    </div>
+</div>
+
+<script>
+(() => {{
+    const selector = document.getElementById("edition-selector-{_id}");
+
+    if (!selector) return;
+
+    const botones = selector.querySelectorAll(".edition-button");
+    const paneles = selector.querySelectorAll(".edition-panel");
+
+    botones.forEach((boton) => {{
+        boton.addEventListener("click", () => {{
+            botones.forEach((b) => b.classList.remove("active"));
+            paneles.forEach((panel) => panel.hidden = true);
+
+            boton.classList.add("active");
+
+            const panelActivo = selector.querySelector(
+                "#" + boton.dataset.target
+            );
+
+            if (panelActivo) {{
+                panelActivo.hidden = false;
+            }}
+        }});
+    }});
+}})();
+</script>
 """
-              )
-
-       seccion_ediciones = "\n".join(bloques_ediciones)
-
   
        #YAML front matter para búsqueda SEO
        front_matter = dedent(f"""\
@@ -92,7 +180,7 @@ def fila_a_obj(filas_libro):
 {(resumen if resumen else "_Resumen próximamente._")}
 
 ## Ediciones disponibles
-{seccion_ediciones}
+{selector_ediciones}
 
 ## Metadatos
 {metadatos}

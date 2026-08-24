@@ -14,9 +14,44 @@ tags: [Papirhos, Icosaedro]
 Resumen proximamente
 
 ## Ediciones disponibles
-### Edición sin especificar
 
-- **Editorial:** Instituto de Matemáticas, UNAM
+<div class="edition-selector" id="edition-selector-pap-ico-3">
+    <div class="edition-buttons">
+        <button type="button" class="edition-button active" data-target="edicion-pap-ico-3-0">Edición sin especificar</button>
+    </div>
+
+    <div class="edition-content">
+        <div id="edicion-pap-ico-3-0" class="edition-panel"><h3>Edición sin especificar</h3><ul><li><strong>Editorial:</strong> Instituto de Matemáticas, UNAM</li></ul></div>
+    </div>
+</div>
+
+<script>
+(() => {
+    const selector = document.getElementById("edition-selector-pap-ico-3");
+
+    if (!selector) return;
+
+    const botones = selector.querySelectorAll(".edition-button");
+    const paneles = selector.querySelectorAll(".edition-panel");
+
+    botones.forEach((boton) => {
+        boton.addEventListener("click", () => {
+            botones.forEach((b) => b.classList.remove("active"));
+            paneles.forEach((panel) => panel.hidden = true);
+
+            boton.classList.add("active");
+
+            const panelActivo = selector.querySelector(
+                "#" + boton.dataset.target
+            );
+
+            if (panelActivo) {
+                panelActivo.hidden = false;
+            }
+        });
+    });
+})();
+</script>
 
 
 ## Metadatos

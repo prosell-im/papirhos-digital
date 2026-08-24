@@ -240,6 +240,31 @@ details > summary { cursor: pointer;
   align-items: center;
 }
 
+.edition-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
 
+.edition-button {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--md-primary-fg-color);
+  border-radius: 0.25rem;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+}
 
+.edition-button:hover {
+  background: var(--md-default-fg-color--lightest);
+}
 
+.edition-button.active {
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+}
+
+.edition-content {
+  margin-top: 1rem;
+}
