@@ -1,10 +1,10 @@
 ---
 title: "Curso introductorio de álgebra II"
 authors: [[['Diana'], ['Avella']], [['Gabriela'], ['Campero']], [['Edith', 'Corina'], ['Saenz', 'Valadez']]]
-tags: [Papirhos, Textos, 2020]
+tags: [Papirhos, Textos]
 ---
 # Curso introductorio de álgebra II
-<div class = "chips"><span class ="chip"></span class ="icon">🏷</span> Textos</span> <span class ="chip"></span class ="icon">📚</span> Papirhos</span> <span class ="chip"></span class ="icon">🗓</span> 2020</span> <span class ="chip"></span class ="icon">ℹ️</span> Publicado</span></div>
+<div class = "chips"><span class ="chip"></span class ="icon">🏷</span> Textos</span> <span class ="chip"></span class ="icon">📚</span> Papirhos</span> <span class ="chip"></span class ="icon">ℹ️</span> Publicado</span></div>
 
 <p align = "left"> <img src = "../../assets/covers/pap-tex-10.png" width="500" height="600"></p>
 
@@ -21,7 +21,21 @@ Resumen proximamente
     </div>
 
     <div class="edition-content">
-        <div id="edicion-pap-tex-10-0" class="edition-panel"><h3>Edición 1</h3><ul><li><strong>Año:</strong> 2020</li><li><strong>Editorial:</strong> Instituto de Matemáticas, UNAM</li><li><strong>ISBN:</strong> 978-607-30-3681-8</li></ul></div>
+        <div id="edicion-pap-tex-10-0" class="edition-panel"><h3>Edición 1</h3><h4>Metadatos</h4>
+<table>
+    <tbody>
+        <tr><th>Autores</th><td>Diana Avella, Gabriela Campero, Edith Corina Saenz Valadez</td></tr><tr><th>Colección</th><td>Papirhos</td></tr><tr><th>Serie</th><td>Textos</td></tr><tr><th>Tomo</th><td>2</td></tr><tr><th>Año</th><td>2020</td></tr><tr><th>Editorial</th><td>Instituto de Matemáticas, UNAM</td></tr><tr><th>Edición</th><td>1</td></tr><tr><th>ISBN (Colección)</th><td>978-607-02-5149-8</td></tr><tr><th>ISBN (Texto)</th><td>978-607-30-3681-8</td></tr>
+    </tbody>
+</table>
+<h4 class="citation-title">Cómo citar</h4><div class="citation-box"><blockquote id="cita-ed-004">Diana Avella, Gabriela Campero, Edith Corina Saenz Valadez. (2020). <em>Curso introductorio de álgebra II</em>. Instituto de Matemáticas, UNAM. Edición 1.</blockquote><button type="button" class="citation-copy-button" data-target="cita-ed-004">Copiar cita</button></div><details><summary>BibTeX</summary><textarea id="bibtex-ed-004" rows="9" cols="80" class="verbatim">@BOOK{ed-004,
+title = {Curso introductorio de álgebra II},
+author = {Avella, Diana and Campero, Gabriela and Saenz, Edith},
+year = {2020},
+publisher = {Instituto de Matemáticas, UNAM},
+edition = {1},
+isbn = {978-607-30-3681-8},
+address = {México}
+}</textarea><br><button type="button" class="bibtex-copy-button" data-target="bibtex-ed-004">Copiar BibTeX</button></details></div>
     </div>
 </div>
 
@@ -50,22 +64,56 @@ Resumen proximamente
             }
         });
     });
+
+    const botonesBibtex = selector.querySelectorAll(".bibtex-copy-button");
+
+    botonesBibtex.forEach((boton) => {
+        boton.addEventListener("click", () => {
+            const textarea = selector.querySelector(
+                "#" + boton.dataset.target
+            );
+
+            if (!textarea) return;
+
+            navigator.clipboard.writeText(textarea.value).then(() => {
+              const textoOriginal = boton.textContent;
+
+              boton.textContent = "Copiado";
+              boton.classList.add("copied");
+
+              setTimeout(() => {
+                       boton.textContent = textoOriginal;
+                       boton.classList.remove("copied");
+              }, 1500);
+            });
+        });
+    });
+    const botonesCita = selector.querySelectorAll(".citation-copy-button");
+
+    botonesCita.forEach((boton) => {
+       boton.addEventListener("click", () => {
+           const cita = selector.querySelector(
+               "#" + boton.dataset.target
+           );
+
+           if (!cita) return;
+
+           navigator.clipboard.writeText(cita.innerText).then(() => {
+              const textoOriginal = boton.textContent;
+
+              boton.textContent = "Copiado";
+              boton.classList.add("copied");
+
+              setTimeout(() => {
+                 boton.textContent = textoOriginal;
+                 boton.classList.remove("copied");
+              }, 1500);
+           });
+       });
+});
 })();
 </script>
 
-
-## Metadatos
-|  |  |
-|---|---|
-| Autores | Diana Avella, Gabriela Campero, Edith Corina Saenz Valadez |
-| Colección | Papirhos |
-| Serie | Textos |
-| Tomo | 2 |
-| Año | 2020 |
-| Editorial | Instituto de Matemáticas, UNAM |
-| Edición | 1 |
-| ISBN (Colección) | 978-607-02-5149-8 |
-| ISBN (Texto) | 978-607-30-3681-8 |
 
 ## Descargas
 <a class="md-button data-book-id=pap-tex-10 download-link" data-book-id="pap-tex-10" href = "pap-tex-10_mark.pdf" target = "_blank" rel ="noopener" > Abrir PDF </a>
@@ -79,40 +127,6 @@ Resumen proximamente
 
 !!! info "Aviso"
     Documento con marca de agua para distribución **digital**.
-
-## Cómo citar
-> Diana Avella, Gabriela Campero, Edith Corina Saenz Valadez. (2020). *Curso introductorio de álgebra II*. Instituto de Matemáticas, UNAM, 1
-
-<details>
-<summary>BibTeX</summary>
-<textarea id="myInput" rows="6" cols="80" class="verbatim">
-@BOOK{pap-tex-10, 
-title = {Curso introductorio de álgebra II}, 
-author = {Avella, Diana and Campero, Gabriela and Saenz, Edith}, 
-year = {2020}, 
-publisher = {Instituto de Matemáticas, UNAM}, 
-address = {México}}
-</textarea>
-<br>
-<button style ="cursor:pointer; background-color: #ecf3ff; color: #448aff; padding: 3px 6px; border-radius: 6px; text-align: center" onclick="myFunction()">Copiar BibTeX</button>
-
-<style>
-  .verbatim {
-    font-family: monospace;
-    white-space: pre;
-  }
-</style>
-
-<script>
-function myFunction() {
-  const copyText = document.getElementById("myInput");
-  copyText.select();
-  navigator.clipboard.writeText(copyText.value);
-  alert("¡Copiado!");
-}
-</script>
-</details>
-
 
 [Volver al catálogo](../catalogo.md)
 

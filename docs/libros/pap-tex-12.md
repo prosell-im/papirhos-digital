@@ -21,7 +21,18 @@ Resumen proximamente
     </div>
 
     <div class="edition-content">
-        <div id="edicion-pap-tex-12-0" class="edition-panel"><h3>Edición sin especificar</h3><ul><li><strong>Editorial:</strong> Instituto de Matemáticas, UNAM</li></ul></div>
+        <div id="edicion-pap-tex-12-0" class="edition-panel"><h3>Edición sin especificar</h3><h4>Metadatos</h4>
+<table>
+    <tbody>
+        <tr><th>Autores</th><td>Pablo Amster</td></tr><tr><th>Colección</th><td>Papirhos</td></tr><tr><th>Serie</th><td>Textos</td></tr><tr><th>Editorial</th><td>Instituto de Matemáticas, UNAM</td></tr><tr><th>ISBN (Colección)</th><td>000</td></tr>
+    </tbody>
+</table>
+<h4 class="citation-title">Cómo citar</h4><div class="citation-box"><blockquote id="cita-ed-015">Pablo Amster. <em>Métodos topológicos en el estudio de las ecuaciones diferenciales no lineales</em>. Instituto de Matemáticas, UNAM.</blockquote><button type="button" class="citation-copy-button" data-target="cita-ed-015">Copiar cita</button></div><details><summary>BibTeX</summary><textarea id="bibtex-ed-015" rows="9" cols="80" class="verbatim">@BOOK{ed-015,
+title = {Métodos topológicos en el estudio de las ecuaciones diferenciales no lineales},
+author = {Amster, Pablo},
+publisher = {Instituto de Matemáticas, UNAM},
+address = {México}
+}</textarea><br><button type="button" class="bibtex-copy-button" data-target="bibtex-ed-015">Copiar BibTeX</button></details></div>
     </div>
 </div>
 
@@ -50,18 +61,56 @@ Resumen proximamente
             }
         });
     });
+
+    const botonesBibtex = selector.querySelectorAll(".bibtex-copy-button");
+
+    botonesBibtex.forEach((boton) => {
+        boton.addEventListener("click", () => {
+            const textarea = selector.querySelector(
+                "#" + boton.dataset.target
+            );
+
+            if (!textarea) return;
+
+            navigator.clipboard.writeText(textarea.value).then(() => {
+              const textoOriginal = boton.textContent;
+
+              boton.textContent = "Copiado";
+              boton.classList.add("copied");
+
+              setTimeout(() => {
+                       boton.textContent = textoOriginal;
+                       boton.classList.remove("copied");
+              }, 1500);
+            });
+        });
+    });
+    const botonesCita = selector.querySelectorAll(".citation-copy-button");
+
+    botonesCita.forEach((boton) => {
+       boton.addEventListener("click", () => {
+           const cita = selector.querySelector(
+               "#" + boton.dataset.target
+           );
+
+           if (!cita) return;
+
+           navigator.clipboard.writeText(cita.innerText).then(() => {
+              const textoOriginal = boton.textContent;
+
+              boton.textContent = "Copiado";
+              boton.classList.add("copied");
+
+              setTimeout(() => {
+                 boton.textContent = textoOriginal;
+                 boton.classList.remove("copied");
+              }, 1500);
+           });
+       });
+});
 })();
 </script>
 
-
-## Metadatos
-|  |  |
-|---|---|
-| Autores | Pablo Amster |
-| Colección | Papirhos |
-| Serie | Textos |
-| Editorial | Instituto de Matemáticas, UNAM |
-| ISBN (Colección) | 000 |
 
 ## Descargas
 <a class="md-button data-book-id=pap-tex-12 download-link" data-book-id="pap-tex-12" href = "pap-tex-12_mark.pdf" target = "_blank" rel ="noopener" > Abrir PDF </a>
@@ -75,40 +124,6 @@ Resumen proximamente
 
 !!! info "Aviso"
     Documento con marca de agua para distribución **digital**.
-
-## Cómo citar
-> Pablo Amster. *Métodos topológicos en el estudio de las ecuaciones diferenciales no lineales*. Instituto de Matemáticas, UNAM
-
-<details>
-<summary>BibTeX</summary>
-<textarea id="myInput" rows="6" cols="80" class="verbatim">
-@BOOK{pap-tex-12, 
-title = {Métodos topológicos en el estudio de las ecuaciones diferenciales no lineales}, 
-author = {Amster, Pablo}, 
-year = {}, 
-publisher = {Instituto de Matemáticas, UNAM}, 
-address = {México}}
-</textarea>
-<br>
-<button style ="cursor:pointer; background-color: #ecf3ff; color: #448aff; padding: 3px 6px; border-radius: 6px; text-align: center" onclick="myFunction()">Copiar BibTeX</button>
-
-<style>
-  .verbatim {
-    font-family: monospace;
-    white-space: pre;
-  }
-</style>
-
-<script>
-function myFunction() {
-  const copyText = document.getElementById("myInput");
-  copyText.select();
-  navigator.clipboard.writeText(copyText.value);
-  alert("¡Copiado!");
-}
-</script>
-</details>
-
 
 [Volver al catálogo](../catalogo.md)
 

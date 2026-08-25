@@ -21,7 +21,17 @@ Resumen proximamente
     </div>
 
     <div class="edition-content">
-        <div id="edicion-pap-mix-1-0" class="edition-panel"><h3>Edición sin especificar</h3><p><em>Información editorial pendiente.</em></p></div>
+        <div id="edicion-pap-mix-1-0" class="edition-panel"><h3>Edición sin especificar</h3><h4>Metadatos</h4>
+<table>
+    <tbody>
+        <tr><th>Autores</th><td>Cecilia Neve Jimenez, Laura Rosales Ortiz</td></tr><tr><th>Colección</th><td>Papirhos</td></tr><tr><th>Serie</th><td>Mixbaal</td></tr>
+    </tbody>
+</table>
+<h4 class="citation-title">Cómo citar</h4><div class="citation-box"><blockquote id="cita-ed-007">Cecilia Neve Jimenez, Laura Rosales Ortiz. <em>Por la senda de los círculos</em>.</blockquote><button type="button" class="citation-copy-button" data-target="cita-ed-007">Copiar cita</button></div><details><summary>BibTeX</summary><textarea id="bibtex-ed-007" rows="9" cols="80" class="verbatim">@BOOK{ed-007,
+title = {Por la senda de los círculos},
+author = {Neve, Cecilia and Rosales, Laura},
+address = {México}
+}</textarea><br><button type="button" class="bibtex-copy-button" data-target="bibtex-ed-007">Copiar BibTeX</button></details></div>
     </div>
 </div>
 
@@ -50,16 +60,56 @@ Resumen proximamente
             }
         });
     });
+
+    const botonesBibtex = selector.querySelectorAll(".bibtex-copy-button");
+
+    botonesBibtex.forEach((boton) => {
+        boton.addEventListener("click", () => {
+            const textarea = selector.querySelector(
+                "#" + boton.dataset.target
+            );
+
+            if (!textarea) return;
+
+            navigator.clipboard.writeText(textarea.value).then(() => {
+              const textoOriginal = boton.textContent;
+
+              boton.textContent = "Copiado";
+              boton.classList.add("copied");
+
+              setTimeout(() => {
+                       boton.textContent = textoOriginal;
+                       boton.classList.remove("copied");
+              }, 1500);
+            });
+        });
+    });
+    const botonesCita = selector.querySelectorAll(".citation-copy-button");
+
+    botonesCita.forEach((boton) => {
+       boton.addEventListener("click", () => {
+           const cita = selector.querySelector(
+               "#" + boton.dataset.target
+           );
+
+           if (!cita) return;
+
+           navigator.clipboard.writeText(cita.innerText).then(() => {
+              const textoOriginal = boton.textContent;
+
+              boton.textContent = "Copiado";
+              boton.classList.add("copied");
+
+              setTimeout(() => {
+                 boton.textContent = textoOriginal;
+                 boton.classList.remove("copied");
+              }, 1500);
+           });
+       });
+});
 })();
 </script>
 
-
-## Metadatos
-|  |  |
-|---|---|
-| Autores | Cecilia Neve Jimenez, Laura Rosales Ortiz |
-| Colección | Papirhos |
-| Serie | Mixbaal |
 
 ## Descargas
 <a class="md-button data-book-id=pap-mix-1 download-link" data-book-id="pap-mix-1" href = "pap-mix-1_mark.pdf" target = "_blank" rel ="noopener" > Abrir PDF </a>
@@ -73,40 +123,6 @@ Resumen proximamente
 
 !!! info "Aviso"
     Documento con marca de agua para distribución **digital**.
-
-## Cómo citar
-> Cecilia Neve Jimenez, Laura Rosales Ortiz. *Por la senda de los círculos*. 
-
-<details>
-<summary>BibTeX</summary>
-<textarea id="myInput" rows="6" cols="80" class="verbatim">
-@BOOK{pap-mix-1, 
-title = {Por la senda de los círculos}, 
-author = {Neve, Cecilia and Rosales, Laura}, 
-year = {}, 
-publisher = {}, 
-address = {México}}
-</textarea>
-<br>
-<button style ="cursor:pointer; background-color: #ecf3ff; color: #448aff; padding: 3px 6px; border-radius: 6px; text-align: center" onclick="myFunction()">Copiar BibTeX</button>
-
-<style>
-  .verbatim {
-    font-family: monospace;
-    white-space: pre;
-  }
-</style>
-
-<script>
-function myFunction() {
-  const copyText = document.getElementById("myInput");
-  copyText.select();
-  navigator.clipboard.writeText(copyText.value);
-  alert("¡Copiado!");
-}
-</script>
-</details>
-
 
 [Volver al catálogo](../catalogo.md)
 

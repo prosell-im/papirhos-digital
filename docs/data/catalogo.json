@@ -30,14 +30,6 @@
         "anio": "2017",
         "isbn_libro": "978-607-02-9845-5",
         "editorial": "Instituto de Matemáticas, UNAM"
-      },
-      {
-        "id_edicion": "ed-test",
-        "edicion": "2",
-        "reimpresion": "",
-        "anio": "2017",
-        "isbn_libro": "978-607-02-9845-test",
-        "editorial": "Instituto de Matemáticas, UNAM"
       }
     ]
   },

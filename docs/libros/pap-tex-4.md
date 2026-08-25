@@ -1,10 +1,10 @@
 ---
 title: "Grupos II"
 authors: [[['Diana'], ['Avella']], [['Octavio'], ['Mendoza']], [['Edith', 'Corina'], ['Saenz', 'Valadez']], [['María', 'José'], ['Souto']]]
-tags: [Papirhos, Textos, 2016]
+tags: [Papirhos, Textos]
 ---
 # Grupos II
-<div class = "chips"><span class ="chip"></span class ="icon">🏷</span> Textos</span> <span class ="chip"></span class ="icon">📚</span> Papirhos</span> <span class ="chip"></span class ="icon">🗓</span> 2016</span> <span class ="chip"></span class ="icon">ℹ️</span> Publicado</span></div>
+<div class = "chips"><span class ="chip"></span class ="icon">🏷</span> Textos</span> <span class ="chip"></span class ="icon">📚</span> Papirhos</span> <span class ="chip"></span class ="icon">ℹ️</span> Publicado</span></div>
 
 <p align = "left"> <img src = "../../assets/covers/pap-tex-4.jpg" width="500" height="600"></p>
 
@@ -21,7 +21,21 @@ Resuemn 6
     </div>
 
     <div class="edition-content">
-        <div id="edicion-pap-tex-4-0" class="edition-panel"><h3>Edición 1</h3><ul><li><strong>Año:</strong> 2016</li><li><strong>Editorial:</strong> Instituto de Matemáticas, UNAM</li><li><strong>ISBN:</strong> 978-607-02-7814-3</li></ul></div>
+        <div id="edicion-pap-tex-4-0" class="edition-panel"><h3>Edición 1</h3><h4>Metadatos</h4>
+<table>
+    <tbody>
+        <tr><th>Autores</th><td>Diana Avella, Octavio Mendoza, Edith Corina Saenz Valadez, María José Souto</td></tr><tr><th>Colección</th><td>Papirhos</td></tr><tr><th>Serie</th><td>Textos</td></tr><tr><th>Tomo</th><td>2</td></tr><tr><th>Año</th><td>2016</td></tr><tr><th>Editorial</th><td>Instituto de Matemáticas, UNAM</td></tr><tr><th>Edición</th><td>1</td></tr><tr><th>ISBN (Colección)</th><td>978-607-02-5149-8</td></tr><tr><th>ISBN (Texto)</th><td>978-607-02-7814-3</td></tr>
+    </tbody>
+</table>
+<h4 class="citation-title">Cómo citar</h4><div class="citation-box"><blockquote id="cita-ed-006">Diana Avella, Octavio Mendoza, Edith Corina Saenz Valadez, María José Souto. (2016). <em>Grupos II</em>. Instituto de Matemáticas, UNAM. Edición 1.</blockquote><button type="button" class="citation-copy-button" data-target="cita-ed-006">Copiar cita</button></div><details><summary>BibTeX</summary><textarea id="bibtex-ed-006" rows="9" cols="80" class="verbatim">@BOOK{ed-006,
+title = {Grupos II},
+author = {Avella, Diana and Mendoza, Octavio and Saenz, Edith and Souto, María},
+year = {2016},
+publisher = {Instituto de Matemáticas, UNAM},
+edition = {1},
+isbn = {978-607-02-7814-3},
+address = {México}
+}</textarea><br><button type="button" class="bibtex-copy-button" data-target="bibtex-ed-006">Copiar BibTeX</button></details></div>
     </div>
 </div>
 
@@ -50,22 +64,56 @@ Resuemn 6
             }
         });
     });
+
+    const botonesBibtex = selector.querySelectorAll(".bibtex-copy-button");
+
+    botonesBibtex.forEach((boton) => {
+        boton.addEventListener("click", () => {
+            const textarea = selector.querySelector(
+                "#" + boton.dataset.target
+            );
+
+            if (!textarea) return;
+
+            navigator.clipboard.writeText(textarea.value).then(() => {
+              const textoOriginal = boton.textContent;
+
+              boton.textContent = "Copiado";
+              boton.classList.add("copied");
+
+              setTimeout(() => {
+                       boton.textContent = textoOriginal;
+                       boton.classList.remove("copied");
+              }, 1500);
+            });
+        });
+    });
+    const botonesCita = selector.querySelectorAll(".citation-copy-button");
+
+    botonesCita.forEach((boton) => {
+       boton.addEventListener("click", () => {
+           const cita = selector.querySelector(
+               "#" + boton.dataset.target
+           );
+
+           if (!cita) return;
+
+           navigator.clipboard.writeText(cita.innerText).then(() => {
+              const textoOriginal = boton.textContent;
+
+              boton.textContent = "Copiado";
+              boton.classList.add("copied");
+
+              setTimeout(() => {
+                 boton.textContent = textoOriginal;
+                 boton.classList.remove("copied");
+              }, 1500);
+           });
+       });
+});
 })();
 </script>
 
-
-## Metadatos
-|  |  |
-|---|---|
-| Autores | Diana Avella, Octavio Mendoza, Edith Corina Saenz Valadez, María José Souto |
-| Colección | Papirhos |
-| Serie | Textos |
-| Tomo | 2 |
-| Año | 2016 |
-| Editorial | Instituto de Matemáticas, UNAM |
-| Edición | 1 |
-| ISBN (Colección) | 978-607-02-5149-8 |
-| ISBN (Texto) | 978-607-02-7814-3 |
 
 ## Descargas
 <a class="md-button data-book-id=pap-tex-4 download-link" data-book-id="pap-tex-4" href = "pap-tex-4_mark.pdf" target = "_blank" rel ="noopener" > Abrir PDF </a>
@@ -79,40 +127,6 @@ Resuemn 6
 
 !!! info "Aviso"
     Documento con marca de agua para distribución **digital**.
-
-## Cómo citar
-> Diana Avella, Octavio Mendoza, Edith Corina Saenz Valadez, María José Souto. (2016). *Grupos II*. Instituto de Matemáticas, UNAM, 1
-
-<details>
-<summary>BibTeX</summary>
-<textarea id="myInput" rows="6" cols="80" class="verbatim">
-@BOOK{pap-tex-4, 
-title = {Grupos II}, 
-author = {Avella, Diana and Mendoza, Octavio and Saenz, Edith and Souto, María}, 
-year = {2016}, 
-publisher = {Instituto de Matemáticas, UNAM}, 
-address = {México}}
-</textarea>
-<br>
-<button style ="cursor:pointer; background-color: #ecf3ff; color: #448aff; padding: 3px 6px; border-radius: 6px; text-align: center" onclick="myFunction()">Copiar BibTeX</button>
-
-<style>
-  .verbatim {
-    font-family: monospace;
-    white-space: pre;
-  }
-</style>
-
-<script>
-function myFunction() {
-  const copyText = document.getElementById("myInput");
-  copyText.select();
-  navigator.clipboard.writeText(copyText.value);
-  alert("¡Copiado!");
-}
-</script>
-</details>
-
 
 [Volver al catálogo](../catalogo.md)
 

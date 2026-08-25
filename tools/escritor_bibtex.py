@@ -1,23 +1,44 @@
-import os
-BASE = os.path.dirname(os.path.dirname(__file__))
-DOCS = os.path.join(BASE, "docs")
-CSV_PATH = os.path.join(BASE, "data", "catalogo.csv")
+def escribe_bibtex(
+    id_edicion,
+    id_libro,
+    titulo,
+    autores,
+    anio,
+    editorial,
+    edicion,
+    reimpresion,
+    isbn_libro
+):
+    # Cada edición debe tener una clave BibTeX única.
+    clave = id_edicion if id_edicion else id_libro
 
-def escribe_metadatos(autores, coleccion, serie, tomo, anio, editorial, edicion, isbn_col, isbn_libro):
-    def opt(label, val):
-    #Minifuncion para evitar que los datos fallen al escribirse
-        return f"| **{label}** | {val} | \n" if val else ""
-    return   (
-                "|  |  |\n"
-                "|---|---|\n"
-                + opt("Autores", ", ".join(autores) if autores else "")
-                + opt("Colección", coleccion)
-                + opt("Serie", serie)
-                + opt("Tomo", tomo)
-                + opt("Año", anio)
-                + opt("Editorial", editorial)
-                + opt("Edición", edicion)
-                + opt("ISBN (Colección)", isbn_col)
-                + opt("ISBN (Libro)", isbn_libro)
-                ).rstrip()
+    campos = []
 
+    if titulo:
+        campos.append(f"title = {{{titulo}}}")
+
+    if autores:
+        campos.append(f"author = {{{' and '.join(autores)}}}")
+
+    if anio:
+        campos.append(f"year = {{{anio}}}")
+
+    if editorial:
+        campos.append(f"publisher = {{{editorial}}}")
+
+    if edicion:
+        campos.append(f"edition = {{{edicion}}}")
+
+    if isbn_libro:
+        campos.append(f"isbn = {{{isbn_libro}}}")
+
+    if reimpresion:
+        campos.append(f"note = {{Reimpresión {reimpresion}}}")
+
+    campos.append("address = {México}")
+
+    contenido = ",\n".join(campos)
+
+    return f"""@BOOK{{{clave},
+{contenido}
+}}"""

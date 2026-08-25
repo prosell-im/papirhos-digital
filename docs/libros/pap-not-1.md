@@ -1,10 +1,10 @@
 ---
 title: "Teoría de singularidades en topología, geometría y foliaciones I"
 authors: [[['Jean-Paul'], ['Brasselet']], [['Felipe'], ['Cano']], [['Dominique'], ['Cerveau']], [['Dung', 'Tráng'], ['Lê']], [['Frank'], ['Loray']], [['Mutsuo'], ['Oka']], [['José'], ['Seade']], [['Mark'], ['Spivakovsky']]]
-tags: [Papirhos, Notas, 2017]
+tags: [Papirhos, Notas]
 ---
 # Teoría de singularidades en topología, geometría y foliaciones I
-<div class = "chips"><span class ="chip"></span class ="icon">🏷</span> Notas</span> <span class ="chip"></span class ="icon">📚</span> Papirhos</span> <span class ="chip"></span class ="icon">🗓</span> 2017</span> <span class ="chip"></span class ="icon">ℹ️</span> Publicado</span></div>
+<div class = "chips"><span class ="chip"></span class ="icon">🏷</span> Notas</span> <span class ="chip"></span class ="icon">📚</span> Papirhos</span> <span class ="chip"></span class ="icon">ℹ️</span> Publicado</span></div>
 
 <p align = "left"> <img src = "../../assets/covers/pap-not-1.jpg" width="500" height="600"></p>
 
@@ -17,11 +17,25 @@ Resumen proximamente
 
 <div class="edition-selector" id="edition-selector-pap-not-1">
     <div class="edition-buttons">
-        <button type="button" class="edition-button active" data-target="edicion-pap-not-1-0">Edición 2</button><button type="button" class="edition-button" data-target="edicion-pap-not-1-1">Edición 1</button>
+        <button type="button" class="edition-button active" data-target="edicion-pap-not-1-0">Edición 1</button>
     </div>
 
     <div class="edition-content">
-        <div id="edicion-pap-not-1-0" class="edition-panel"><h3>Edición 2</h3><ul><li><strong>Año:</strong> 2017</li><li><strong>Editorial:</strong> Instituto de Matemáticas, UNAM</li><li><strong>ISBN:</strong> 978-607-02-9845-test</li></ul></div><div id="edicion-pap-not-1-1" class="edition-panel" hidden><h3>Edición 1</h3><ul><li><strong>Año:</strong> 2017</li><li><strong>Editorial:</strong> Instituto de Matemáticas, UNAM</li><li><strong>ISBN:</strong> 978-607-02-9845-5</li></ul></div>
+        <div id="edicion-pap-not-1-0" class="edition-panel"><h3>Edición 1</h3><h4>Metadatos</h4>
+<table>
+    <tbody>
+        <tr><th>Autores</th><td>Jean-Paul Brasselet, Felipe Cano, Dominique Cerveau, Dung Tráng Lê, Frank Loray, Mutsuo Oka, José Seade, Mark Spivakovsky</td></tr><tr><th>Colección</th><td>Papirhos</td></tr><tr><th>Serie</th><td>Notas</td></tr><tr><th>Año</th><td>2017</td></tr><tr><th>Editorial</th><td>Instituto de Matemáticas, UNAM</td></tr><tr><th>Edición</th><td>1</td></tr><tr><th>ISBN (Colección)</th><td>978-607-02-5149-8</td></tr><tr><th>ISBN (Texto)</th><td>978-607-02-9845-5</td></tr>
+    </tbody>
+</table>
+<h4 class="citation-title">Cómo citar</h4><div class="citation-box"><blockquote id="cita-ed-001">Jean-Paul Brasselet, Felipe Cano, Dominique Cerveau, Dung Tráng Lê, Frank Loray, Mutsuo Oka, José Seade, Mark Spivakovsky. (2017). <em>Teoría de singularidades en topología, geometría y foliaciones I</em>. Instituto de Matemáticas, UNAM. Edición 1.</blockquote><button type="button" class="citation-copy-button" data-target="cita-ed-001">Copiar cita</button></div><details><summary>BibTeX</summary><textarea id="bibtex-ed-001" rows="9" cols="80" class="verbatim">@BOOK{ed-001,
+title = {Teoría de singularidades en topología, geometría y foliaciones I},
+author = {Brasselet, Jean-Paul and Cano, Felipe and Cerveau, Dominique and Lê, Dung and Loray, Frank and Oka, Mutsuo and Seade, José and Spivakovsky, Mark},
+year = {2017},
+publisher = {Instituto de Matemáticas, UNAM},
+edition = {1},
+isbn = {978-607-02-9845-5},
+address = {México}
+}</textarea><br><button type="button" class="bibtex-copy-button" data-target="bibtex-ed-001">Copiar BibTeX</button></details></div>
     </div>
 </div>
 
@@ -50,21 +64,56 @@ Resumen proximamente
             }
         });
     });
+
+    const botonesBibtex = selector.querySelectorAll(".bibtex-copy-button");
+
+    botonesBibtex.forEach((boton) => {
+        boton.addEventListener("click", () => {
+            const textarea = selector.querySelector(
+                "#" + boton.dataset.target
+            );
+
+            if (!textarea) return;
+
+            navigator.clipboard.writeText(textarea.value).then(() => {
+              const textoOriginal = boton.textContent;
+
+              boton.textContent = "Copiado";
+              boton.classList.add("copied");
+
+              setTimeout(() => {
+                       boton.textContent = textoOriginal;
+                       boton.classList.remove("copied");
+              }, 1500);
+            });
+        });
+    });
+    const botonesCita = selector.querySelectorAll(".citation-copy-button");
+
+    botonesCita.forEach((boton) => {
+       boton.addEventListener("click", () => {
+           const cita = selector.querySelector(
+               "#" + boton.dataset.target
+           );
+
+           if (!cita) return;
+
+           navigator.clipboard.writeText(cita.innerText).then(() => {
+              const textoOriginal = boton.textContent;
+
+              boton.textContent = "Copiado";
+              boton.classList.add("copied");
+
+              setTimeout(() => {
+                 boton.textContent = textoOriginal;
+                 boton.classList.remove("copied");
+              }, 1500);
+           });
+       });
+});
 })();
 </script>
 
-
-## Metadatos
-|  |  |
-|---|---|
-| Autores | Jean-Paul Brasselet, Felipe Cano, Dominique Cerveau, Dung Tráng Lê, Frank Loray, Mutsuo Oka, José Seade, Mark Spivakovsky |
-| Colección | Papirhos |
-| Serie | Notas |
-| Año | 2017 |
-| Editorial | Instituto de Matemáticas, UNAM |
-| Edición | 1 |
-| ISBN (Colección) | 978-607-02-5149-8 |
-| ISBN (Texto) | 978-607-02-9845-5 |
 
 ## Descargas
 <a class="md-button data-book-id=pap-not-1 download-link" data-book-id="pap-not-1" href = "pap-not-1_mark.pdf" target = "_blank" rel ="noopener" > Abrir PDF </a>
@@ -78,40 +127,6 @@ Resumen proximamente
 
 !!! info "Aviso"
     Documento con marca de agua para distribución **digital**.
-
-## Cómo citar
-> Jean-Paul Brasselet, Felipe Cano, Dominique Cerveau, Dung Tráng Lê, Frank Loray, Mutsuo Oka, José Seade, Mark Spivakovsky. (2017). *Teoría de singularidades en topología, geometría y foliaciones I*. Instituto de Matemáticas, UNAM, 1
-
-<details>
-<summary>BibTeX</summary>
-<textarea id="myInput" rows="6" cols="80" class="verbatim">
-@BOOK{pap-not-1, 
-title = {Teoría de singularidades en topología, geometría y foliaciones I}, 
-author = {Brasselet, Jean-Paul and Cano, Felipe and Cerveau, Dominique and Lê, Dung and Loray, Frank and Oka, Mutsuo and Seade, José and Spivakovsky, Mark}, 
-year = {2017}, 
-publisher = {Instituto de Matemáticas, UNAM}, 
-address = {México}}
-</textarea>
-<br>
-<button style ="cursor:pointer; background-color: #ecf3ff; color: #448aff; padding: 3px 6px; border-radius: 6px; text-align: center" onclick="myFunction()">Copiar BibTeX</button>
-
-<style>
-  .verbatim {
-    font-family: monospace;
-    white-space: pre;
-  }
-</style>
-
-<script>
-function myFunction() {
-  const copyText = document.getElementById("myInput");
-  copyText.select();
-  navigator.clipboard.writeText(copyText.value);
-  alert("¡Copiado!");
-}
-</script>
-</details>
-
 
 [Volver al catálogo](../catalogo.md)
 

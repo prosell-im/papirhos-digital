@@ -3,6 +3,7 @@ from textwrap import dedent
 
 import extractidatos
 import escribe_metadatos
+import escritor_bibtex
 
 BASE = os.path.dirname(os.path.dirname(__file__))
 DOCS = os.path.join(BASE, "docs")
@@ -29,10 +30,8 @@ def fila_a_obj(filas_libro):
        #Escritor de chip para la página de ficha
        def chip(label, val, emoji):
               return f'<span class ="chip"></span class ="icon">{emoji}</span> {val}</span>' if val else ""
-       chips = " ".join(x for x in [chip("Serie", serie, "🏷"), chip("Colección", coleccion, "📚"), chip("Año", anio, "🗓"), chip("Estado", estado.replace("_", " "), "ℹ️") ] if x
+       chips = " ".join(x for x in [chip("Serie", serie, "🏷"), chip("Colección", coleccion, "📚"), chip("Estado", estado.replace("_", " "), "ℹ️") ] if x
                         )
-       #Tabla de metadatos
-       metadatos = escribe_metadatos.escribe_metadatos(autores, coleccion, serie, tomo, anio, editorial, edicion, isbn_col, isbn_libro)
 
        # Selector de ediciones
        ediciones = []
@@ -66,6 +65,59 @@ def fila_a_obj(filas_libro):
        for i, info_edicion in enumerate(ediciones):
               id_panel = f"edicion-{_id}-{i}"
 
+              num_edicion = info_edicion["edicion"]
+              reimpresion = info_edicion["reimpresion"]
+              anio_edicion = info_edicion["anio"]
+              isbn_edicion = info_edicion["isbn_libro"]
+              editorial_edicion = info_edicion["editorial"]
+              id_edicion = info_edicion["id_edicion"]
+
+              metadatos_edicion = escribe_metadatos.escribe_metadatos(
+                     autores,
+                     coleccion,
+                     serie,
+                     tomo,
+                     anio_edicion,
+                     editorial_edicion,
+                     num_edicion,
+                     reimpresion,
+                     isbn_col,
+                     isbn_edicion
+            )
+
+              partes_cita = []
+
+              if autores:
+                     partes_cita.append(", ".join(autsnor) + ".")
+
+              if anio_edicion:
+                     partes_cita.append(f"({anio_edicion}).")
+
+              partes_cita.append(f"<em>{titulo}</em>.")
+
+              if editorial_edicion:
+                     partes_cita.append(editorial_edicion + ".")
+
+              if num_edicion:
+                     partes_cita.append(f"Edición {num_edicion}.")
+
+              if reimpresion:
+                     partes_cita.append(f"Reimpresión {reimpresion}.")
+
+              cita_edicion = " ".join(partes_cita)
+
+              bibtex_edicion = escritor_bibtex.escribe_bibtex(
+                     id_edicion,
+                     _id,
+                     titulo,
+                     autbib,
+                     anio_edicion,
+                     editorial_edicion,
+                     num_edicion,
+                     reimpresion,
+                     isbn_edicion
+     )
+
               if info_edicion["edicion"]:
                      etiqueta = f"Edición {info_edicion['edicion']}"
               else:
@@ -84,41 +136,38 @@ def fila_a_obj(filas_libro):
                      f'</button>'
               )
 
-              datos = []
-
-              if info_edicion["anio"]:
-                     datos.append(
-                            f"<li><strong>Año:</strong> {info_edicion['anio']}</li>"
-                     )
-
-              if info_edicion["editorial"]:
-                     datos.append(
-                            f"<li><strong>Editorial:</strong> {info_edicion['editorial']}</li>"
-                     )
-
-              if info_edicion["isbn_libro"]:
-                     datos.append(
-                            f"<li><strong>ISBN:</strong> {info_edicion['isbn_libro']}</li>"
-                     )
-
-              if info_edicion["reimpresion"]:
-                     datos.append(
-                            f"<li><strong>Reimpresión:</strong> {info_edicion['reimpresion']}</li>"
-                     )
-
-              if datos:
-                     contenido_edicion = f"<ul>{''.join(datos)}</ul>"
-              else:
-                     contenido_edicion = "<p><em>Información editorial pendiente.</em></p>"
-
               oculto = "" if i == 0 else " hidden"
+
+              id_bibtex = f"bibtex-{id_edicion or i}"
+
+              id_cita = f"cita-{id_edicion or i}"
 
               paneles_ediciones.append(
                      f'<div id="{id_panel}" class="edition-panel"{oculto}>'
                      f'<h3>{etiqueta}</h3>'
-                     f'{contenido_edicion}'
+                     f'<h4>Metadatos</h4>'
+                     f'{metadatos_edicion}'
+                     f'<h4 class="citation-title">Cómo citar</h4>'
+                     f'<div class="citation-box">'
+                     f'<blockquote id="{id_cita}">{cita_edicion}</blockquote>'
+                     f'<button type="button" class="citation-copy-button" '
+                     f'data-target="{id_cita}">'
+                     f'Copiar cita'
+                     f'</button>'
                      f'</div>'
-              )
+                     f'<details>'
+                     f'<summary>BibTeX</summary>'
+                     f'<textarea id="{id_bibtex}" rows="9" cols="80" class="verbatim">'
+                     f'{bibtex_edicion}'
+                     f'</textarea>'
+                     f'<br>'
+                     f'<button type="button" class="bibtex-copy-button" '
+                     f'data-target="{id_bibtex}">'
+                     f'Copiar BibTeX'
+                     f'</button>'
+                     f'</details>'
+                     f'</div>'
+        )
 
        selector_ediciones = f"""
 <div class="edition-selector" id="edition-selector-{_id}">
@@ -156,6 +205,53 @@ def fila_a_obj(filas_libro):
             }}
         }});
     }});
+    
+    const botonesBibtex = selector.querySelectorAll(".bibtex-copy-button");
+
+    botonesBibtex.forEach((boton) => {{
+        boton.addEventListener("click", () => {{
+            const textarea = selector.querySelector(
+                "#" + boton.dataset.target
+            );
+
+            if (!textarea) return;
+
+            navigator.clipboard.writeText(textarea.value).then(() => {{
+              const textoOriginal = boton.textContent;
+
+              boton.textContent = "Copiado";
+              boton.classList.add("copied");
+
+              setTimeout(() => {{
+                       boton.textContent = textoOriginal;
+                       boton.classList.remove("copied");
+              }}, 1500);
+            }});
+        }});
+    }});
+    const botonesCita = selector.querySelectorAll(".citation-copy-button");
+
+    botonesCita.forEach((boton) => {{
+       boton.addEventListener("click", () => {{
+           const cita = selector.querySelector(
+               "#" + boton.dataset.target
+           );
+
+           if (!cita) return;
+
+           navigator.clipboard.writeText(cita.innerText).then(() => {{
+              const textoOriginal = boton.textContent;
+
+              boton.textContent = "Copiado";
+              boton.classList.add("copied");
+
+              setTimeout(() => {{
+                 boton.textContent = textoOriginal;
+                 boton.classList.remove("copied");
+              }}, 1500);
+           }});
+       }});
+}});
 }})();
 </script>
 """
@@ -165,7 +261,7 @@ def fila_a_obj(filas_libro):
        ---
        title: "{titulo}"
        authors: {autores if autores else []}
-       tags: [{", ".join(t for t in [coleccion, serie, anio] if t)}]
+       tags: [{", ".join(t for t in [coleccion, serie] if t)}]
        ---
        """)
        #Contenido de la ficha en MARKDOWN. Nota que quité la sangría porque estoy dentro del entorno con tres comillas, entonces no importa la indentación. Si esto no se hace así, la ficha no se genera correctamente.
@@ -182,48 +278,11 @@ def fila_a_obj(filas_libro):
 ## Ediciones disponibles
 {selector_ediciones}
 
-## Metadatos
-{metadatos}
-
 ## Descargas
 {downs}
 
 !!! info "Aviso"
     Documento con marca de agua para distribución **digital**.
-
-## Cómo citar
-> {(", ".join(autsnor) +". ") if autores else ""}{f"({anio}). " if anio else ""}*{titulo}*. {editorial}{(", " + str(edicion)) if edicion else ""}
-
-<details>
-<summary>BibTeX</summary>
-<textarea id="myInput" rows="6" cols="80" class="verbatim">
-@BOOK{{{_id}, 
-title = {{{titulo}}}, 
-author = {{{" and ".join(autbib) if autores else ""}}}, 
-year = {{{anio}}}, 
-publisher = {{{editorial}}}, 
-address = {{México}}}}
-</textarea>
-<br>
-<button style ="cursor:pointer; background-color: #ecf3ff; color: #448aff; padding: 3px 6px; border-radius: 6px; text-align: center" onclick="myFunction()">Copiar BibTeX</button>
-
-<style>
-  .verbatim {{
-    font-family: monospace;
-    white-space: pre;
-  }}
-</style>
-
-<script>
-function myFunction() {{
-  const copyText = document.getElementById("myInput");
-  copyText.select();
-  navigator.clipboard.writeText(copyText.value);
-  alert("¡Copiado!");
-}}
-</script>
-</details>
-
 
 [Volver al catálogo](../catalogo.md)
 
