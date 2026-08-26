@@ -20,16 +20,26 @@
 <div id="resultados"></div>
 <script>
 
-    (async function() {
+(async function() {
     const { origin, hostname, pathname} = window.location;
-    <!-- El cálculo de la base se hace de dos formas, una para ver si estamos en deployment o si estamos trabajando con MKDCOS -->
+    
+    // Calcula la ruta base para desarrollo local y GitHub Pages
+    
     let BASE = origin + "/";
-    if (hostname.endsWith(".github.io")) {const segs = pathname.split("/").filter(Boolean); if (segs.length> 0) BASE = `${origin}/${segs[0]}/`;}
-    console.log("base = ", BASE);
+
+    if (hostname.endsWith(".github.io")) {
+        const segs = pathname.split("/").filter(Boolean);
+
+        if (segs.length> 0) {
+            BASE = `${origin}/${segs[0]}/`;
+        }
+    }
+
     const resp = await fetch(`${BASE}data/catalogo.json`);
     const libros = await resp.json();
     const $ = (sel) => document.querySelector(sel);
     const unique = (arr) => Array.from(new Set(arr.filter(Boolean)));
+    const aniosLibro = (libro) => (libro.ediciones || []).map(edicion => String(edicion.anio || '').trim()).filter(Boolean);
     const selColeccion = $('#f-coleccion');
     const selSerie = $('#f-serie');
     const selAnio = $('#f-anio');
@@ -39,40 +49,73 @@
     const selOrder = document.querySelector('#f-order')
     unique(libros.map(x=> x.coleccion)).sort().forEach(c => selColeccion.insertAdjacentHTML('beforeend',`<option>${c}</option>`));
     unique(libros.map(x=> x.serie)).sort().forEach(s => selSerie.insertAdjacentHTML('beforeend',`<option>${s}</option>`));
-    unique(libros.map(x=> String(x.anio))).sort().forEach(a => selAnio.insertAdjacentHTML('beforeend',`<option>${a}</option>`))
+
+    unique(libros.flatMap(libro => aniosLibro(libro))).sort().forEach(anio => selAnio.insertAdjacentHTML('beforeend',`<option>${anio}</option>`));
+
     const cont = document.querySelector('#resultados');
-    function render(lista){
-        if(!Array.isArray(lista)) {
-        cont.textContent = 'Error: datos inválidos';
-        return;
-    }
-    if (!lista.length){
-    cont.innerHTML = '<p><em>Sin resultados.</em></p>';
-        return;
+
+    function render(lista) {
+        if (!Array.isArray(lista)) {
+            cont.textContent = 'Error: datos inválidos';
+            contador.textContent = '';
+            return;
         }
-    cont.innerHTML = lista.map(x => `
-        <!-- <div class="card">
-        <h3><a href="${BASE}/libros/${x.id}/"> <b>${x.titulo}</b> <br>
-            <small class="meta"><strong><Autores:></strong>${(x.autores && x.autores.length ? x.autores.join(', ') : '_')}</small>
-            <p>${[x.coleccion ? `Colección: ${x.coleccion}` : '', x.serie ? `Serie: ${x.serie}` : '', x.anio ? `Año: ${x.anio}` : ''].filter(Boolean).join(' | ')}</p>
-            <img src="${BASE}/assets/covers/${x.id}.jpg" style="display: none" onload="this.style.display=''">
-            <img src="${BASE}/assets/covers/${x.id}.png" style="display: none" onload="this.style.display=''">
-        </div> -->
-        <div class="card">
-        <a href="${BASE}/libros/${x.id}/">
-          <div class="libro-portada">
-              <img src="${BASE}/assets/covers/${x.id}.jpg" style="display: none" onload="this.style.display=''">
-              <img src="${BASE}/assets/covers/${x.id}.png" style="display: none" onload="this.style.display=''">
-          </div>
-          <div class="libro-datos">
-            <h3>${x.titulo}<br>
-            <div class="autores"><strong><Autores:></strong>${(x.autores && x.autores.length ? x.autores.join(', ') : '_')}</div>
-            <div class="meta">${[x.coleccion ? `<b>Colección:</b> ${x.coleccion}` : '', x.serie ? `<b>Serie:</b> ${x.serie}` : '', x.anio ? `<b>Año:</b> ${x.anio}` : ''].filter(Boolean).join(' | ')}<br>
-            <b>ISBN: </b>${x.isbn_libro}</div>
-          </div>
-        </div>        
-        `).join('');
-    }
+
+        contador.textContent =
+            `${lista.length} ${lista.length === 1 ? 'resultado' : 'resultados'}`;
+
+        if (!lista.length) {
+            cont.innerHTML = '<p><em>Sin resultados.</em></p>';
+            return;
+        }
+
+        cont.innerHTML = lista.map(x => `
+            <div class="card">
+                <a href="${BASE}libros/${x.id}/">
+                    <div class="libro-portada">
+                        <img
+                            src="${BASE}assets/covers/${x.id}.jpg"
+                            style="display: none"
+                            onload="this.style.display=''"
+                        >
+                        <img
+                            src="${BASE}assets/covers/${x.id}.png"
+                            style="display: none"
+                            onload="this.style.display=''"
+                        >
+                    </div>
+
+                    <div class="libro-datos">
+                        <h3>${x.titulo}</h3>
+
+                        <div class="autores">
+                            <strong>Autores:</strong>
+                            ${(x.autores && x.autores.length
+                                ? x.autores.join(', ')
+                                : '_')}
+                        </div>
+
+                        <div class="meta">
+                            ${[
+                                x.coleccion
+                                    ? `<b>Colección:</b> ${x.coleccion}`
+                                    : '',
+                                x.serie
+                                    ? `<b>Serie:</b> ${x.serie}`
+                                    : '',
+                                x.anio
+                                    ? `<b>Año:</b> ${x.anio}`
+                                    : ''
+                            ].filter(Boolean).join(' | ')}
+                            <br>
+                            <b>ISBN:</b> ${x.isbn_libro || ''}
+                        </div>
+                    </div>
+                </a>
+           </div>
+       `).join('');
+}
+
     function coincideAutor(libro, needle){
         if(!needle) return true;
         const n = needle.toLowerCase();
@@ -89,7 +132,14 @@
         const au = inpAutor.value.trim();
         const ti = inpTitulo.value.trim();
         const comparator = getComparator(selOrder.value || 'titulo-asc');
-        const out = libros.filter(x=> (!c || x.coleccion === c) && (!s || String(x.serie || '') === String(s)) && (!a || String(x.anio) === String(a)) && coincideAutor(x, au) && coincideTitulo(x,ti)).sort(comparator);
+        const out = libros
+            .filter(x => 
+            (!c || x.coleccion === c) && 
+            (!s || String(x.serie || '') === String(s)) && 
+            (!a || aniosLibro(x).includes(a)) && 
+            coincideAutor(x, au) &&
+            coincideTitulo(x,ti)
+            ).sort(comparator);
         render(out);
     }
     selColeccion.addEventListener('change', filtrar);
@@ -143,18 +193,3 @@
 })();
 
 </script>
-
-<!-- <style>
-    #resultados .card{
-        padding:.9rem 1rem; 
-        border:1px solid
-        var(--md-default-fg-color--lightest);
-        border-radius:.5rem; margin:.5rem 0;
-    }
-    #resultados h3 {margin:.2rem 0 .3rem;
-    font-size:1.05rem;
-    }
-    #resultados p{
-        margin:.1rem 0;
-    }
-</style> -->
