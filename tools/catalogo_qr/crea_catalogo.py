@@ -5,8 +5,8 @@ import pandas as pd
 # RUTAS DE ENTRADA / SALIDA
 # ==========================
 
-BASE = os.path.dirname(os.path.dirname(__file__))
-PROJECT_ROOT = os.path.dirname(BASE)
+BASE = os.path.dirname(os.path.dirname(__file__))  #Representa papirhos-digital/tools
+PROJECT_ROOT = os.path.dirname(BASE) #Representa papirhos-digital
 
 
 AUTORES_CSV        = os.path.join(BASE, "catalogo_qr", "autores.csv")
@@ -14,7 +14,7 @@ LIBROS_AUTORES_CSV = os.path.join(BASE, "catalogo_qr", "libros_autores.csv")
 LIBROS_CSV         = os.path.join(BASE, "catalogo_qr", "libros.csv")
 EDICIONES_CSV      = os.path.join(BASE, "catalogo_qr", "ediciones.csv")
 
-SALIDA_CSV         = os.path.join(PROJECT_ROOT, "data", "catalogo.csv")
+SALIDA_CSV         = os.path.join(PROJECT_ROOT, "data", "catalogo.csv") #Representa papirhos-digital/data/catalogo.csv
 
 # ==========================
 # 1. LEER ARCHIVOS
@@ -22,14 +22,19 @@ SALIDA_CSV         = os.path.join(PROJECT_ROOT, "data", "catalogo.csv")
 
 autores        = pd.read_csv(AUTORES_CSV)        # columnas: id_autor, nombres, apellidos
 libros_autores = pd.read_csv(LIBROS_AUTORES_CSV) # columnas: id_libro, id_autor
-libros         = pd.read_csv(LIBROS_CSV)         # columnas: id_libro, titulo, coleccion, ...
+libros         = pd.read_csv(LIBROS_CSV)         # columnas: id_libro, titulo, coleccion, serie, num_serie, isbn_col, tomo, resumen, estado
 ediciones      = pd.read_csv(EDICIONES_CSV)      # columnas: id_edicion, id_libro, edicion, reimpresion, anio, isbn_libro, editorial
 
 # Asegurarnos de tener nombres de columnas coherentes
 
+
+# Llama las columnas de los archivos .csv, convierte los valores a strings y prepara los datos para su uso posterior. 
+
 # ==========
 # AUTORES
 # ==========
+
+#Crea una nueva columna 'autor_fmt' que combina nombres y apellidos.
 
 autores["id_autor"]  = autores["id_autor"].astype(str).str.strip()
 autores["nombres"]   = autores["nombres"].fillna("").astype(str)
@@ -37,13 +42,11 @@ autores["apellidos"] = autores["apellidos"].fillna("").astype(str)
 autores["autor_fmt"] = autores["nombres"] + ">" + autores["apellidos"]
 
 # ==========
-# 3. PROCESAR RELACIÓN LIBROS-AUTORES
+# PROCESAR RELACIÓN LIBROS-AUTORES
 # ==========
 
 libros_autores["id_libro"] = libros_autores["id_libro"].astype(str).str.strip()
 libros_autores["id_autor"] = libros_autores["id_autor"].astype(str).str.strip()
-
-al = libros_autores.copy()  # Copia para no modificar el original
 
 # ==========
 # EDICIONES
@@ -53,16 +56,17 @@ ediciones["id_edicion"] = ediciones["id_edicion"].astype(str).str.strip()
 ediciones["id_libro"] = ediciones["id_libro"].astype(str).str.strip()
 
 # ==========
-# MERGE PARA OBTENER EL TEXTO DE CADA AUTOR
+# MERGE DE LIBROS_AUTORES CON AUTORES 
 # ==========
 
-al = al.merge(
+al = libros_autores.merge(
     autores[["id_autor", "autor_fmt"]],
     on="id_autor",
     how="left"
 )
 
 # Evitar NaN y asegurarnos de que todo sea str
+
 al["autor_fmt"] = al["autor_fmt"].fillna("").astype(str)
 
 # ==========
@@ -76,14 +80,18 @@ autores_por_libro = (
 )
 
 # ==========================
-# 4. UNIR LIBROS + AUTORES
+# UNIR LIBROS + AUTORES AGRUPADOS + EDICIONES
 # ==========================
+
+#Libros + autores agrupados
 
 catalogo = libros.merge(
     autores_por_libro,
     on="id_libro",
     how="left"
 )
+
+#Libros + autores agrupados + ediciones
 
 catalogo = catalogo.merge(
     ediciones[["id_edicion", "id_libro", "edicion", "reimpresion", "anio", "isbn_libro", "editorial"]],
@@ -93,13 +101,19 @@ catalogo = catalogo.merge(
 
 # Volver a llamar 'id_libro' simplemente 'id' para el CSV final
 catalogo = catalogo.rename(columns={"id_libro": "id"})
-catalogo["anio"] = catalogo["anio"].fillna("").astype(str).str.replace(".0", "", regex=False)
-catalogo["edicion"] = catalogo["edicion"].fillna("").astype(str).str.replace(".0", "", regex=False)
-catalogo["reimpresion"] = catalogo["reimpresion"].fillna("").astype(str).str.replace(".0", "", regex=False)
-catalogo["tomo"] = catalogo["tomo"].fillna("").astype(str).str.replace(".0", "", regex=False)
+
+# Limpia y estandariza los datos de las columnas numéricas y de texto
+
+for columna in ["anio", "edicion", "reimpresion", "tomo"]:
+    catalogo[columna] = (
+        catalogo[columna]
+        .fillna("")
+        .astype(str)
+        .str.replace(".0", "", regex=False)
+    )
 
 # ==========================
-# 5. ORDENAR COLUMNAS COMO QUIERES
+# ORDENAR COLUMNAS COMO QUIERES
 # ==========================
 
 columnas_finales = [
@@ -121,13 +135,12 @@ columnas_finales = [
     "estado",
 ]
 
-# Por si acaso alguna columna faltara, filtramos a las que existan
-columnas_existentes = [c for c in columnas_finales if c in catalogo.columns]
-catalogo = catalogo[columnas_existentes]
+catalogo = catalogo[columnas_finales]
 
 # ==========================
-# 6. GUARDAR CSV FINAL
+# GUARDAR CSV FINAL
 # ==========================
 
 catalogo.to_csv(SALIDA_CSV, index=False, lineterminator="\n")
+
 print(f"Catálogo generado en: {SALIDA_CSV}")
