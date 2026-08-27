@@ -151,9 +151,14 @@ def main():
     libros_autores = leer_csv(LIBROS_AUTORES_CSV)
     ediciones = leer_csv(EDICIONES_CSV)
 
-    if any(df is None for df in [autores, libros, libros_autores, ediciones]):
-        print("\nValidación detenida porque falta uno o más archivos.")
-        return
+    if (
+       autores is None
+       or libros is None
+       or libros_autores is None
+       or ediciones is None
+   ):
+       print("\nValidación detenida porque falta uno o más archivos.")
+       return
 
     errores += revisar_columnas(
         autores,
