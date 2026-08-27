@@ -1,12 +1,69 @@
-autores.csv
-Dado un autor NOMBRE APELLIDO, su id es NEAO (letras inicial y final del nombre y del apellido). 
-Si tiene más de un nombre o apellido, se toma el primero escrito de cada uno.
+## Estructura de datos del catálogo
 
+El catálogo se organiza a partir de cuatro tablas principales ubicadas en tools/catalogo_qr/:
 
-resumenes.csv
-El id corresponde al id del libro. 
+### autores.csv
 
-coleccion-serie-numserie
-Si no hay serie, se pone una x
-Por ejemplo: Curso introductorio de álgebra I es: Papirhos, Textos, 6. id = pap-tex-6
-Olimpiadas en SLP Elemental es: Cuadernos de olimpiadas de matemáticas, no hay serie, número 7. id= cuad-x-7
+Contiene la información básica de cada autor.
+
+Columnas:
+
+- id_autor: identificador único del autor.
+- nombres: nombre o nombres del autor.
+- apellidos: apellido o apellidos del autor.
+
+### libros.csv
+
+Contiene la información general de cada libro, independiente de sus ediciones.
+
+Columnas:
+
+- id_libro: identificador único del libro.
+- titulo: título del libro.
+- coleccion: colección a la que pertenece.
+- serie: serie dentro de la colección.
+- num_serie: número dentro de la serie.
+- isbn_col: ISBN de la colección, si aplica.
+- tomo: tomo del libro, si aplica.
+- resumen: resumen del libro.
+- estado: estado de disponibilidad o publicación.
+
+### libros_autores.csv
+
+Representa la relación entre libros y autores.
+
+Esta tabla permite que un libro tenga varios autores y que un autor esté asociado con varios libros.
+
+Columnas:
+
+- id_libro: identificador del libro.
+- id_autor: identificador del autor.
+
+### ediciones.csv
+
+Contiene la información bibliográfica específica de cada edición.
+
+Columnas:
+
+- id_edicion: identificador único de la edición.
+- id_libro: libro al que pertenece la edición.
+- edicion: número de edición.
+- reimpresion: número de reimpresión, si aplica.
+- anio: año de publicación.
+- isbn_libro: ISBN específico de la edición.
+- editorial: editorial de la edición.
+
+## Comandos útiles
+
+Generar data/catalogo.csv a partir de las tablas normalizadas:
+
+```powershell
+py tools/catalogo_qr/crea_catalogo.py
+
+Generar páginas, catálogo y archivos JSON:
+
+py tools/pipeline_archivos.py
+
+Validar la consistencia de las tablas:
+
+py tools/catalogo_qr/valida_datos.py
