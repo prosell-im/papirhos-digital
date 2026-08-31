@@ -6,6 +6,7 @@ def escribe_metadatos(
     anio,
     editorial,
     edicion,
+    reimpresiones,
     isbn_col,
     isbn_libro
 ):
@@ -29,8 +30,8 @@ def escribe_metadatos(
         + opt("Edición", edicion)
         + opt("ISBN (Colección)", isbn_col)
         + opt("ISBN (Texto)", isbn_libro)
+        + opt("Reimpresiones", reimpresiones)
     )
-
     return f"""
 <table>
     <tbody>

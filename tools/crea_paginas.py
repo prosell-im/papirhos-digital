@@ -1,4 +1,5 @@
 import os
+import csv
 from textwrap import dedent
 
 import extractidatos
@@ -8,9 +9,41 @@ import escritor_bibtex
 BASE = os.path.dirname(os.path.dirname(__file__))
 DOCS = os.path.join(BASE, "docs")
 
+REIMPRESIONES_CSV = os.path.join(BASE, "tools", "catalogo_qr", "reimpresiones.csv")
+
+def cargar_reimpresiones():
+       reimpresiones_por_edicion = {}
+
+       if not os.path.exists(REIMPRESIONES_CSV):
+              return reimpresiones_por_edicion
+
+       with open(REIMPRESIONES_CSV, newline="", encoding="utf-8") as archivo:
+              lector = csv.DictReader(archivo)
+
+              for fila in lector:
+                     id_edicion = (fila.get("id_edicion") or "").strip()
+
+                     if not id_edicion:
+                            continue
+
+                     reimpresion = {
+                            "id_reimpresion": (fila.get("id_reimpresion") or "").strip(),
+                            "reimpresion": (fila.get("reimpresion") or "").strip(),
+                            "anio": (fila.get("anio") or "").strip(),
+                     }
+
+                     reimpresiones_por_edicion.setdefault(
+                            id_edicion,
+                            []
+                     ).append(reimpresion)
+
+       return reimpresiones_por_edicion
+
 def fila_a_obj(filas_libro):
        r = filas_libro[0]  # Usamos la primera fila como referencia para los metadatos del libro
        autores, anio, _id, titulo, coleccion, serie, tomo, editorial, edicion, isbn_col, isbn_libro, estado, resumen, downs = extractidatos.extractidatos(r)
+
+       reimpresiones_por_edicion = cargar_reimpresiones()
 
        #Autores para citar:
        #Recuerda que se recibe una lista del tipo [[nombre1, nombre2], [apellido1, apellido2]]
@@ -34,16 +67,19 @@ def fila_a_obj(filas_libro):
                         )
 
        # Selector de ediciones
-       ediciones = []
-
+       
+       ediciones= []
+       
        for fila in filas_libro:
+              id_edicion = (fila.get("id_edicion") or "").strip()
+
               ediciones.append({
-                     "id_edicion": (fila.get("id_edicion") or "").strip(),
+                     "id_edicion": id_edicion,
                      "edicion": (fila.get("edicion") or "").strip(),
                      "anio": (fila.get("anio") or "").strip(),
                      "isbn_libro": (fila.get("isbn_libro") or "").strip(),
                      "editorial": (fila.get("editorial") or "").strip(),
-                     "reimpresiones": [],
+                     "reimpresiones": reimpresiones_por_edicion.get(id_edicion, []),
               })
 
        # Coloca primero la edición con el número más alto.
@@ -71,6 +107,29 @@ def fila_a_obj(filas_libro):
               editorial_edicion = info_edicion["editorial"]
               id_edicion = info_edicion["id_edicion"]
 
+              items_reimpresiones = []
+
+              for rep in info_edicion.get("reimpresiones", []):
+                     numero_rep = rep.get("reimpresion", "")
+                     anio_rep = rep.get("anio", "")
+
+                     if not numero_rep and not anio_rep:
+                            continue
+
+                     if numero_rep and anio_rep:
+                            texto_rep = f"{numero_rep} ({anio_rep})"
+
+                     elif numero_rep:
+                          texto_rep = numero_rep
+
+                     else:
+                            texto_rep = anio_rep
+
+
+                     items_reimpresiones.append(texto_rep)
+
+              reimpresiones_edicion = ", ".join(items_reimpresiones)
+
               metadatos_edicion = escribe_metadatos.escribe_metadatos(
                      autores,
                      coleccion,
@@ -79,6 +138,7 @@ def fila_a_obj(filas_libro):
                      anio_edicion,
                      editorial_edicion,
                      num_edicion,
+                     reimpresiones_edicion,
                      isbn_col,
                      isbn_edicion
               )
@@ -110,7 +170,7 @@ def fila_a_obj(filas_libro):
                      editorial_edicion,
                      num_edicion,
                      isbn_edicion
-     )
+              )
 
               if info_edicion["edicion"]:
                      etiqueta = f"Edición {info_edicion['edicion']}"
