@@ -48,10 +48,22 @@ Columnas:
 - id_edicion: identificador único de la edición.
 - id_libro: libro al que pertenece la edición.
 - edicion: número de edición.
-- reimpresion: número de reimpresión, si aplica.
 - anio: año de publicación.
 - isbn_libro: ISBN específico de la edición.
 - editorial: editorial de la edición.
+
+### reimpresiones.csv
+
+Contiene las reimpresiones asociadas a cada edición.
+
+Columnas:
+
+- id_reimpresion: identificador único de la reimpresión.
+- id_edicion: identificador de la edición a la que pertenece.
+- reimpresion: número de reimpresión.
+- anio: año de la reimpresión, si se conoce.
+
+Las reimpresiones no modifican la cita ni el BibTeX de la edición. Se muestran como información adicional dentro de los metadatos de la edición correspondiente.
 
 ## Comandos útiles
 
