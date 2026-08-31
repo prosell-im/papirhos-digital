@@ -8,6 +8,7 @@ AUTORES_CSV = BASE / "autores.csv"
 LIBROS_CSV = BASE / "libros.csv"
 LIBROS_AUTORES_CSV = BASE / "libros_autores.csv"
 EDICIONES_CSV = BASE / "ediciones.csv"
+REIMPRESIONES_CSV = BASE / "reimpresiones.csv"
 
 
 def leer_csv(ruta):
@@ -112,6 +113,45 @@ def revisar_relaciones(libros, autores, libros_autores, ediciones):
 
     return errores
 
+def revisar_reimpresiones(ediciones, reimpresiones):
+    errores = []
+
+    ids_ediciones = set(ediciones["id_edicion"].str.strip())
+    ids_reimpresiones = set(reimpresiones["id_edicion"].str.strip())
+
+    ediciones_inexistentes = sorted(ids_reimpresiones - ids_ediciones - {""})
+
+    if ediciones_inexistentes:
+        errores.append(
+            "reimpresiones.csv: hay id_edicion que no existen en ediciones.csv: "
+            + ", ".join(ediciones_inexistentes)
+        )
+
+    reimpresiones_repetidas = reimpresiones[
+        reimpresiones.duplicated(
+            subset=["id_edicion", "reimpresion"],
+            keep=False,
+        )
+    ]
+
+    if not reimpresiones_repetidas.empty:
+        pares = (
+            reimpresiones_repetidas[["id_edicion", "reimpresion"]]
+            .drop_duplicates()
+            .apply(
+                lambda fila: f"{fila['id_edicion']} - reimpresión {fila['reimpresion']}",
+                axis=1,
+            )
+            .tolist()
+        )
+
+        errores.append(
+            "reimpresiones.csv: reimpresiones repetidas: "
+            + ", ".join(pares)
+        )
+
+    return errores
+
 
 def revisar_datos_faltantes_ediciones(ediciones):
     advertencias = []
@@ -150,12 +190,14 @@ def main():
     libros = leer_csv(LIBROS_CSV)
     libros_autores = leer_csv(LIBROS_AUTORES_CSV)
     ediciones = leer_csv(EDICIONES_CSV)
+    reimpresiones = leer_csv(REIMPRESIONES_CSV)
 
     if (
        autores is None
        or libros is None
        or libros_autores is None
        or ediciones is None
+       or reimpresiones is None
    ):
        print("\nValidación detenida porque falta uno o más archivos.")
        return
@@ -194,7 +236,6 @@ def main():
             "id_edicion",
             "id_libro",
             "edicion",
-            "reimpresion",
             "anio",
             "isbn_libro",
             "editorial",
@@ -202,9 +243,21 @@ def main():
         "ediciones.csv",
     )
 
+    errores += revisar_columnas(
+        reimpresiones,
+        [
+            "id_reimpresion",
+            "id_edicion",
+            "reimpresion",
+            "anio",
+        ],
+        "reimpresiones.csv",
+    )
+
     errores += revisar_ids_unicos(autores, "id_autor", "autores.csv")
     errores += revisar_ids_unicos(libros, "id_libro", "libros.csv")
     errores += revisar_ids_unicos(ediciones, "id_edicion", "ediciones.csv")
+    errores += revisar_ids_unicos(reimpresiones, "id_reimpresion", "reimpresiones.csv")
 
     errores += revisar_relaciones(
         libros,
@@ -213,6 +266,7 @@ def main():
         ediciones,
     )
 
+    errores += revisar_reimpresiones(ediciones, reimpresiones)
     advertencias += revisar_datos_faltantes_ediciones(ediciones)
 
     print("\nVALIDACIÓN DE TABLAS DEL CATÁLOGO")
@@ -239,7 +293,7 @@ def main():
     print(f"- Libros: {len(libros)}")
     print(f"- Relaciones libro-autor: {len(libros_autores)}")
     print(f"- Ediciones: {len(ediciones)}")
-
+    print(f"- Reimpresiones: {len(reimpresiones)}")
 
 if __name__ == "__main__":
     main()
