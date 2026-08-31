@@ -15,8 +15,6 @@ theme:
 extra_css:
  - stylesheets/extra.css
  - stylesheets/media.css
-extra:
- current_year: 2025
 nav:
  - Inicio: index.md
  - Catálogo: catalogo.md
