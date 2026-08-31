@@ -41,10 +41,10 @@ def gjsn(filas_libro):
         ediciones.append({
             "id_edicion": (fila.get("id_edicion") or "").strip(),
             "edicion": (fila.get("edicion") or "").strip(),
-            "reimpresion": (fila.get("reimpresion") or "").strip(),
             "anio": (fila.get("anio") or "").strip(),
             "isbn_libro": (fila.get("isbn_libro") or "").strip(),
             "editorial": (fila.get("editorial") or "").strip(),
+            "reimpresiones": []
         })
 
     return {

@@ -26,10 +26,10 @@
       {
         "id_edicion": "ed-001",
         "edicion": "1",
-        "reimpresion": "",
         "anio": "2017",
         "isbn_libro": "978-607-02-9845-5",
-        "editorial": "Instituto de Matemáticas, UNAM"
+        "editorial": "Instituto de Matemáticas, UNAM",
+        "reimpresiones": []
       }
     ]
   },
@@ -53,10 +53,10 @@
       {
         "id_edicion": "ed-002",
         "edicion": "2",
-        "reimpresion": "",
         "anio": "2018",
         "isbn_libro": "978-607-02-85882",
-        "editorial": "Instituto de Matemáticas, UNAM"
+        "editorial": "Instituto de Matemáticas, UNAM",
+        "reimpresiones": []
       }
     ]
   },
@@ -81,10 +81,10 @@
       {
         "id_edicion": "ed-003",
         "edicion": "1",
-        "reimpresion": "",
         "anio": "2017",
         "isbn_libro": "978-607-02-8824-1",
-        "editorial": "Instituto de Matemáticas, UNAM"
+        "editorial": "Instituto de Matemáticas, UNAM",
+        "reimpresiones": []
       }
     ]
   },
@@ -110,10 +110,10 @@
       {
         "id_edicion": "ed-004",
         "edicion": "1",
-        "reimpresion": "",
         "anio": "2020",
         "isbn_libro": "978-607-30-3681-8",
-        "editorial": "Instituto de Matemáticas, UNAM"
+        "editorial": "Instituto de Matemáticas, UNAM",
+        "reimpresiones": []
       }
     ]
   },
@@ -140,10 +140,10 @@
       {
         "id_edicion": "ed-005",
         "edicion": "3",
-        "reimpresion": "",
         "anio": "2014",
         "isbn_libro": "978-607-02-9435-8",
-        "editorial": "Instituto de Matemáticas, UNAM"
+        "editorial": "Instituto de Matemáticas, UNAM",
+        "reimpresiones": []
       }
     ]
   },
@@ -170,10 +170,10 @@
       {
         "id_edicion": "ed-006",
         "edicion": "1",
-        "reimpresion": "",
         "anio": "2016",
         "isbn_libro": "978-607-02-7814-3",
-        "editorial": "Instituto de Matemáticas, UNAM"
+        "editorial": "Instituto de Matemáticas, UNAM",
+        "reimpresiones": []
       }
     ]
   },
@@ -198,10 +198,10 @@
       {
         "id_edicion": "ed-007",
         "edicion": "",
-        "reimpresion": "",
         "anio": "",
         "isbn_libro": "",
-        "editorial": ""
+        "editorial": "",
+        "reimpresiones": []
       }
     ]
   },
@@ -227,10 +227,10 @@
       {
         "id_edicion": "ed-008",
         "edicion": "",
-        "reimpresion": "",
         "anio": "",
         "isbn_libro": "",
-        "editorial": "Instituto de Matemáticas, UNAM"
+        "editorial": "Instituto de Matemáticas, UNAM",
+        "reimpresiones": []
       }
     ]
   },
@@ -254,10 +254,10 @@
       {
         "id_edicion": "ed-009",
         "edicion": "",
-        "reimpresion": "",
         "anio": "",
         "isbn_libro": "",
-        "editorial": "Instituto de Matemáticas, UNAM"
+        "editorial": "Instituto de Matemáticas, UNAM",
+        "reimpresiones": []
       }
     ]
   },
@@ -282,10 +282,10 @@
       {
         "id_edicion": "ed-010",
         "edicion": "",
-        "reimpresion": "",
         "anio": "",
         "isbn_libro": "",
-        "editorial": "Instituto de Matemáticas, UNAM"
+        "editorial": "Instituto de Matemáticas, UNAM",
+        "reimpresiones": []
       }
     ]
   },
@@ -310,10 +310,10 @@
       {
         "id_edicion": "ed-011",
         "edicion": "",
-        "reimpresion": "",
         "anio": "",
         "isbn_libro": "",
-        "editorial": "Instituto de Matemáticas, UNAM"
+        "editorial": "Instituto de Matemáticas, UNAM",
+        "reimpresiones": []
       }
     ]
   },
@@ -338,10 +338,10 @@
       {
         "id_edicion": "ed-012",
         "edicion": "",
-        "reimpresion": "",
         "anio": "",
         "isbn_libro": "",
-        "editorial": "Instituto de Matemáticas, UNAM"
+        "editorial": "Instituto de Matemáticas, UNAM",
+        "reimpresiones": []
       }
     ]
   },
@@ -365,10 +365,10 @@
       {
         "id_edicion": "ed-013",
         "edicion": "",
-        "reimpresion": "",
         "anio": "",
         "isbn_libro": "",
-        "editorial": "Instituto de Matemáticas, UNAM"
+        "editorial": "Instituto de Matemáticas, UNAM",
+        "reimpresiones": []
       }
     ]
   },
@@ -394,10 +394,10 @@
       {
         "id_edicion": "ed-014",
         "edicion": "",
-        "reimpresion": "",
         "anio": "",
         "isbn_libro": "",
-        "editorial": "Instituto de Matemáticas, UNAM"
+        "editorial": "Instituto de Matemáticas, UNAM",
+        "reimpresiones": []
       }
     ]
   },
@@ -421,10 +421,10 @@
       {
         "id_edicion": "ed-015",
         "edicion": "",
-        "reimpresion": "",
         "anio": "",
         "isbn_libro": "",
-        "editorial": "Instituto de Matemáticas, UNAM"
+        "editorial": "Instituto de Matemáticas, UNAM",
+        "reimpresiones": []
       }
     ]
   },
@@ -455,10 +455,10 @@
       {
         "id_edicion": "ed-016",
         "edicion": "",
-        "reimpresion": "",
         "anio": "",
         "isbn_libro": "",
-        "editorial": "Instituto de Matemáticas, UNAM"
+        "editorial": "Instituto de Matemáticas, UNAM",
+        "reimpresiones": []
       }
     ]
   },
@@ -485,10 +485,10 @@
       {
         "id_edicion": "ed-017",
         "edicion": "",
-        "reimpresion": "",
         "anio": "",
         "isbn_libro": "",
-        "editorial": "Instituto de Matemáticas, UNAM"
+        "editorial": "Instituto de Matemáticas, UNAM",
+        "reimpresiones": []
       }
     ]
   },
@@ -514,10 +514,10 @@
       {
         "id_edicion": "ed-018",
         "edicion": "",
-        "reimpresion": "",
         "anio": "",
         "isbn_libro": "",
-        "editorial": "Instituto de Matemáticas, UNAM"
+        "editorial": "Instituto de Matemáticas, UNAM",
+        "reimpresiones": []
       }
     ]
   }
