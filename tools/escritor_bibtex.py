@@ -6,7 +6,6 @@ def escribe_bibtex(
     anio,
     editorial,
     edicion,
-    reimpresion,
     isbn_libro
 ):
     # Cada edición debe tener una clave BibTeX única.
@@ -31,9 +30,6 @@ def escribe_bibtex(
 
     if isbn_libro:
         campos.append(f"isbn = {{{isbn_libro}}}")
-
-    if reimpresion:
-        campos.append(f"note = {{Reimpresión {reimpresion}}}")
 
     campos.append("address = {México}")
 

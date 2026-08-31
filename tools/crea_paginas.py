@@ -40,10 +40,10 @@ def fila_a_obj(filas_libro):
               ediciones.append({
                      "id_edicion": (fila.get("id_edicion") or "").strip(),
                      "edicion": (fila.get("edicion") or "").strip(),
-                     "reimpresion": (fila.get("reimpresion") or "").strip(),
                      "anio": (fila.get("anio") or "").strip(),
                      "isbn_libro": (fila.get("isbn_libro") or "").strip(),
                      "editorial": (fila.get("editorial") or "").strip(),
+                     "reimpresiones": [],
               })
 
        # Coloca primero la edición con el número más alto.
@@ -66,7 +66,6 @@ def fila_a_obj(filas_libro):
               id_panel = f"edicion-{_id}-{i}"
 
               num_edicion = info_edicion["edicion"]
-              reimpresion = info_edicion["reimpresion"]
               anio_edicion = info_edicion["anio"]
               isbn_edicion = info_edicion["isbn_libro"]
               editorial_edicion = info_edicion["editorial"]
@@ -80,10 +79,9 @@ def fila_a_obj(filas_libro):
                      anio_edicion,
                      editorial_edicion,
                      num_edicion,
-                     reimpresion,
                      isbn_col,
                      isbn_edicion
-            )
+              )
 
               partes_cita = []
 
@@ -101,9 +99,6 @@ def fila_a_obj(filas_libro):
               if num_edicion:
                      partes_cita.append(f"Edición {num_edicion}.")
 
-              if reimpresion:
-                     partes_cita.append(f"Reimpresión {reimpresion}.")
-
               cita_edicion = " ".join(partes_cita)
 
               bibtex_edicion = escritor_bibtex.escribe_bibtex(
@@ -114,7 +109,6 @@ def fila_a_obj(filas_libro):
                      anio_edicion,
                      editorial_edicion,
                      num_edicion,
-                     reimpresion,
                      isbn_edicion
      )
 
@@ -122,9 +116,6 @@ def fila_a_obj(filas_libro):
                      etiqueta = f"Edición {info_edicion['edicion']}"
               else:
                      etiqueta = "Edición sin especificar"
-
-              if info_edicion["reimpresion"]:
-                     etiqueta += f" · Reimpresión {info_edicion['reimpresion']}"
 
               clase_activa = " active" if i == 0 else ""
 
