@@ -21,6 +21,7 @@ nav:
  - Búsqueda avanzada: explorar.md
  - Acerca de: acerca.md
  - TUL: tul.md
+ - Contacto: contacto.md
 markdown_extensions:
  - admonition
  - pymdownx.details
