@@ -1,20 +1,25 @@
-# Página de prueba para publicación de textos
-Te damos la bienvenida a la página  de ---, un proyecto dedicado a la difusión de obras académicas sobre matemáticas. Nuestro objetivo es facilitar el acceso abierto a libros y materiales de investigación de alta calidad para el público especializado y no especializado.
+# Papirhos Digital
 
----
-## 📚 Catálogo en línea
-Consulta el listado completo de nuestros títulos disponibles en nuestro [catálogo](catalogo.md) o utiliza la sección de [explorar](explorar.md) para filtrar y descubrir obras por tema, autor o colección.
+Papirhos Digital es un catálogo de libros y materiales académicos de matemáticas publicados por la Editorial de Matemáticas del Instituto de Matemáticas, UNAM.
 
----
-## 👥 Quiénes somos
-Escribir esta sección para presentar los objetivos de la página.
+El objetivo del sitio es facilitar la consulta, descarga y difusión de textos de acceso libre para estudiantes, docentes, investigadores y público interesado en matemáticas.
 
-Más detalles en la sección [Acerca de](acerca.md).
+## Catálogo en línea
 
----
+Consulta el listado completo de títulos disponibles o utiliza la búsqueda avanzada para encontrar libros por colección, serie, autor, título o año.
 
-## 🗺 Empieza aquí
-[Explorar libros](explorar.md)
+[Explorar libros](explorar.md){ .md-button .md-button--primary }
+[Ver catálogo completo](catalogo.md){ .md-button }
 
-[Ver catálogo completo](catalogo.md)
+## ¿Qué puedes encontrar?
 
+- Libros de texto.
+- Notas académicas.
+- Materiales de olimpiada.
+- Actas y publicaciones especializadas.
+
+## Acerca del proyecto
+
+Este sitio busca organizar y preservar digitalmente el catálogo de publicaciones, manteniendo información bibliográfica clara y acceso directo a los materiales disponibles.
+
+[Conocer más](acerca.md)

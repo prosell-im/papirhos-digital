@@ -121,9 +121,6 @@ address = {México}
 </object>
 </details>
 
-!!! info "Aviso"
-    Documento con marca de agua para distribución **digital**.
-
 [Volver al catálogo](../catalogo.md)
 
 [Explorar](../explorar.md)

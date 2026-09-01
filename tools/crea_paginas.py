@@ -60,6 +60,13 @@ def fila_a_obj(filas_libro):
        cover_abs = os.path.join(DOCS, cover_rel)
        cover_file = f'\"../../{cover_rel}\"' if os.path.exists(cover_abs) else '\"../../'+covername+'.jpg\"' 
 
+
+       if downs and downs.strip():
+              bloque_descargas = downs
+       else:
+              bloque_descargas = "Aún no hay archivos digitales disponibles para este título."
+              bloque_aviso = ""
+
        #Escritor de chip para la página de ficha
        def chip(label, val, emoji):
               return f'<span class ="chip"></span class ="icon">{emoji}</span> {val}</span>' if val else ""
@@ -330,10 +337,7 @@ def fila_a_obj(filas_libro):
 {selector_ediciones}
 
 ## Descargas
-{downs}
-
-!!! info "Aviso"
-    Documento con marca de agua para distribución **digital**.
+{bloque_descargas}
 
 [Volver al catálogo](../catalogo.md)
 

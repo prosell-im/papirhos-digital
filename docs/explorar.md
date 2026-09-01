@@ -1,5 +1,5 @@
 <div id="filtros">
-<label>Coleccion: <select id="f-coleccion"><option value="">Todas</option></select> </label>
+<label>Colección: <select id="f-coleccion"><option value="">Todas</option></select> </label>
 <label>Serie: <select id="f-serie"><option value="">Todas</option></select> </label>
 <label>Año:<select id="f-anio"><option value ="">Todos</option></select></label>
 <label>Autor: <input id="f-autor" type="text" placeholder ="Ej. Pérez"></label>
@@ -40,6 +40,19 @@
     const $ = (sel) => document.querySelector(sel);
     const unique = (arr) => Array.from(new Set(arr.filter(Boolean)));
     const aniosLibro = (libro) => (libro.ediciones || []).map(edicion => String(edicion.anio || '').trim()).filter(Boolean);
+    const estadoLegible = (estado) => {
+        const estados = {
+            "Publicado": "Disponible en línea",
+            "publicado": "Disponible en línea",
+            "Físico": "Disponible en formato físico",
+            "Fisico": "Disponible en formato físico",
+            "fisico": "Disponible en formato físico",
+            "Por recibir": "Pendiente de recibir",
+            "por_recibir": "Pendiente de recibir"
+        };
+
+        return estados[estado] || estado;
+    };
     const selColeccion = $('#f-coleccion');
     const selSerie = $('#f-serie');
     const selAnio = $('#f-anio');
@@ -105,10 +118,14 @@
                                     : '',
                                 x.anio
                                     ? `<b>Año:</b> ${x.anio}`
-                                    : ''
+                                    : '',
+                                x.estado
+                                    ? `<b>Estado:</b> ${estadoLegible(x.estado)}`
+                                    : ''    
                             ].filter(Boolean).join(' | ')}
-                            <br>
-                            <b>ISBN:</b> ${x.isbn_libro || ''}
+                            
+                            ${x.isbn_libro 
+                                ? `<br><b>ISBN:</b> ${x.isbn_libro}` : ''}
                         </div>
                     </div>
                 </a>
