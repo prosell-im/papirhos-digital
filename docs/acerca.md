@@ -6,7 +6,4 @@ El propósito de esta página es poner a disposición del público interesado te
 - Ofrecer acceso a materiales académicos
 - Construir una biblioteca digital 
 
-## Contacto
-📨 Correo: correo@direccion.com
-
 🌍 [Sitio web del instituto](https://www.matem.unam.mx/)
