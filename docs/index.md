@@ -1,53 +1,63 @@
-<h1 class="home-title"> Papirhos Digital</h1>
+<section class="home-hero">
 
-<section class="page-section">
+<div class="home-hero-text">
+
+<h1 class="home-title">Papirhos Digital</h1>
+
+<p class="home-lead">
+Catálogo digital de libros y materiales académicos de matemáticas publicados por la Editorial de Matemáticas del Instituto de Matemáticas, UNAM.
+</p>
 
 <p>
-Papirhos Digital es un catálogo de libros y materiales académicos de matemáticas publicados por la Editorial de Matemáticas del Instituto de Matemáticas, UNAM.
+Consulta fichas bibliográficas, explora títulos por autor, colección o año, y accede a los archivos digitales disponibles.
 </p>
-<p>
-El objetivo del sitio es facilitar la consulta, descarga y difusión de textos de acceso libre para estudiantes, docentes, investigadores y público interesado en matemáticas.
-</p>
+
+<div class="home-actions">
+<a href="explorar/" class="md-button md-button--primary">Explorar libros</a>
+<a href="catalogo/" class="md-button">Ver catálogo</a>
+</div>
+
+</div>
+
+<div class="home-hero-books">
+<img src="assets/covers/pap-not-1.jpg" alt="Portada de libro">
+<img src="assets/covers/pap-tex-1.png" alt="Portada de libro">
+<img src="assets/covers/cuad-x-1.png" alt="Portada de libro">
+</div>
+
 </section>
 
 <section class="page-section-soft">
 
-<h2> Catálogo en línea </h2>
-
-<p>
-Consulta el listado completo de títulos disponibles o utiliza la búsqueda avanzada para encontrar libros por colección, serie, autor, título o año.
-</p>
-
-<p>
-<a href="explorar/" class="md-button md-button--primary"> Explorar libros </a>
-<a href="catalogo/" class="md-button"> Ver catalogo completo </a>
-</p>
-
-</section>
-
-<section class="page-section">
-
-<h2> ¿Qué puedes encontrar? </h2>
+<h2>¿Qué puedes encontrar?</h2>
 
 <ul>
- <li>Libros de texto.</li>
- <li>Notas académicas.</li>
- <li>Materiales de olimpiada.</li>
- <li>Actas y publicaciones especializadas.</li>
+<li>Libros de texto.</li>
+<li>Notas académicas.</li>
+<li>Materiales de olimpiada.</li>
+<li>Actas y publicaciones especializadas.</li>
 </ul>
 
 </section>
 
-<section class="page-section-soft">
+<section class="page-section">
 
-<h2> Acerca del proyecto </h2>
+<h2>Información bibliográfica</h2>
 
 <p>
-
-Este sitio busca organizar y preservar digitalmente el catálogo de publicaciones, manteniendo información bibliográfica clara y acceso directo a los materiales disponibles.
-
+Cada ficha puede incluir metadatos de edición, cita bibliográfica, BibTeX, reimpresiones registradas y archivos disponibles para consulta o descarga.
 </p>
 
-<a href="acerca/" class="md-button md-button--primary"> Conocer más </a>
+</section>
+
+<section class="page-section-soft">
+
+<h2>Informes y pedidos</h2>
+
+<p>
+Para dudas sobre disponibilidad, pedidos o títulos impresos, consulta la página de contacto.
+</p>
+
+<a href="contacto/" class="md-button md-button--primary">Contacto</a>
 
 </section>
