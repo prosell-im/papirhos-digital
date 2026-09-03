@@ -104,27 +104,10 @@ body{
 }
 
 #encabezado {
-  position: absolute;
-  max-width: initial;
-  width: 80%;
-  top: 0px;
-  /* margin: auto; */
-  /* z-index: 1000; */
-}
-
-#encabezado > div#logoizq {
-  height: 100px;
-  width: 89px;
-  display: block;
-  position: absolute;
-  /* left: 2rem; */
-  /* background-color: coral; */
-  background-image: url("../assets/logos/unam-silver.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
+  position: relative;
+  max-width: none;
+  width: 100%;
+  height: 80px !important;
 }
 
 #encabezado > div#logoizq:hover {
@@ -136,33 +119,45 @@ body{
   transform: translateY(-50%);
 }
 
-#encabezado > div#logomid {
-  height: 81px;
-  width: 337px;
+#encabezado > div#logoizq {
+  height: 100px;
+  width: 90px;
   display: block;
-  position: relative;
-  margin: auto;
-  /* background-color: coral; */
+  position: absolute;
+  left: 2rem;
+  background-image: url("../assets/logos/unam-silver.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#encabezado > div#logomid {
+  height: 85px;
+  width: 340px;
+  display: block;
+  position: absolute;
+  left: 50%;
   background-image: url("../assets/logos/logo-papirhos-digital.svg");
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: center;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
 }
 
 #encabezado > div#logoder {
   height: 90px;
-  width: 216px;
+  width: 220px;
   display: block;
   position: absolute;
-  right: 0;
-  /* background-color: coral; */
+  right: -2rem !important;
   background-image: url("../assets/logos/im-cropped.svg");
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: center;
   top: 50%;
-  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 
@@ -337,8 +332,8 @@ details > summary { cursor: pointer;
 .site-footer {
   background: #5f5f5f;
   color: #ffffff;
-  padding: 2.5rem 1rem 2rem;
-  margin-top: 2.5rem;
+  padding: 1.5rem 1rem 1rem;
+  margin-top: 1rem;
   text-align: center;
 }
 
@@ -353,10 +348,14 @@ details > summary { cursor: pointer;
 
 .footer-logo {
   display: block;
-  margin: 0 auto;
-  max-height: 86px;
-  transform: scale(1.3);
-  width: auto;
+  height: 50px !important;
+  width: auto !important;
+  max-height: none !important;
+  max-width: none !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: auto !important;
+  transform: translateX(-10px) scale(1.1);
   transform-origin: center;
 }
 
@@ -366,7 +365,7 @@ details > summary { cursor: pointer;
   align-items: center;
   gap: 1.2rem;
   flex-wrap: wrap;
-  margin-bottom: 0.9rem;
+  margin-bottom: 0.6rem;
 }
 
 .footer-links-centered a {
@@ -383,7 +382,7 @@ details > summary { cursor: pointer;
 .footer-tagline {
   font-size: 1rem;
   color: #f2f2f2;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   letter-spacing: 0.03em;
 }
 
@@ -392,7 +391,7 @@ details > summary { cursor: pointer;
   max-width: 760px;
   height: 1px;
   background: rgba(255, 255, 255, 0.45);
-  margin: 0 auto 1rem auto;
+  margin: 0 auto 0.5rem auto;
 }
 
 .footer-meta {
@@ -405,7 +404,7 @@ details > summary { cursor: pointer;
 }
 
 .page-section {
-  padding: 2rem 0;
+  padding: 2rem 2rem;
   border-top: 1px solid #dddddd;
 }
 
@@ -441,11 +440,11 @@ details > summary { cursor: pointer;
 }
 
 .home-title {
-  margin-top: 0;
+  margin-top: 1rem;
   margin-bottom: 1rem;
   font-weight: 800;
   font-size: 4rem;
-  color: #222222;
+  color: #e5e5e5;
   letter-spacing: -0.02em;
   text-align: center;
 }
@@ -455,13 +454,13 @@ details > summary { cursor: pointer;
   display: block;
   width: 10rem;
   height: 3px;
-  margin: 1rem auto 0 auto;
+  margin: 1.5rem auto 0 auto;
   background: #777777;
 }
 
 .md-typeset h1.home-title {
   font-weight: 550 !important;
-  color: #222222 !important;
+  color: #4a4949 !important;
   font-size: 2.5rem !important;
   letter-spacing: -0.02em;
   text-align: center;
